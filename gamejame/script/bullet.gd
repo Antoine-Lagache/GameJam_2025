@@ -11,7 +11,8 @@ func _ready():
 	
 func _physics_process(delta: float) -> void:
 	var direction_vector = Vector2(cos(direction),sin(direction))
-	global_position += speed*direction_vector
+	#global_position += speed*direction_vector
+	global_position += speed*direction_vector*delta #pour que se soit compatible à différents frame rate
 	direction += angular_velocity
 	test_exit_screen()
 	
