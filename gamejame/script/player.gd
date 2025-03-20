@@ -6,7 +6,11 @@ const start_position = Vector2(300, 300)
 var screen_size = DisplayServer.screen_get_size()
 const size_player = Vector2(10,10)
 
+func loose_pv():
+	pass
+
 func _ready() -> void:
+	print(get_class())
 	position = start_position
 
 func _physics_process(_delta: float) -> void:
@@ -26,8 +30,9 @@ func _physics_process(_delta: float) -> void:
 		velocity.y = -abs(-velocity.y)
 	velocity = direction*SPEED
 	for i in get_slide_collision_count():
-		var collision = get_slide_collision(i).get_collider()
-		
+		var collision:Node = get_slide_collision(i).get_collider()
+		if collision.is_in_group("bullet"):
+			loose_pv()
 		
 	
 
