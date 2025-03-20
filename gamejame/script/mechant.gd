@@ -1,17 +1,21 @@
-extends RigidBody2D
+extends Node2D
 
-var x
-var y
 
-@onready var bullet = "res://scene/bullet.tscn"
+@onready var bullet = load("res://scene/bullet.tscn")
 
 
 func _ready():
-	pass
+	position = Vector2(500, 250)
 	
 func _physics_process(delta: float) -> void:
+	print(len(get_children()))
 	pass
 
 
 func _on_timer_timeout() -> void:
-	add_child(bullet.instantiate())
+	for i in range(10):
+		var new_bullet = bullet.instantiate()
+		new_bullet.global_position = global_position
+		new_bullet.speed = randf_range(5, 10)
+		new_bullet.direction = randf_range(0, 2 * PI)
+		add_child(new_bullet)

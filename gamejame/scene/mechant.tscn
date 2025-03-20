@@ -1,23 +1,25 @@
-[gd_scene load_steps=4 format=3 uid="uid://buqc2qb5ffm8d"]
+[gd_scene load_steps=4 format=3 uid="uid://5kfsarhxidag"]
 
 [ext_resource type="Texture2D" uid="uid://b84o0xaklfcsc" path="res://sprites/mechant.png" id="1_to7ja"]
-[ext_resource type="Script" path="res://script/mechant.gd" id="2_7bvp0"]
+[ext_resource type="Script" uid="uid://db1rl4it33xcl" path="res://script/mechant.gd" id="2_7bvp0"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_7bvp0"]
 radius = 47.0425
 
 [node name="mechant" type="Node2D"]
+script = ExtResource("2_7bvp0")
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
 texture = ExtResource("1_to7ja")
 
 [node name="RigidBody2D" type="RigidBody2D" parent="."]
-script = ExtResource("2_7bvp0")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="RigidBody2D"]
 position = Vector2(0, 1)
 shape = SubResource("CircleShape2D_7bvp0")
 
 [node name="Timer" type="Timer" parent="."]
+wait_time = 0.001
+autostart = true
 
-[connection signal="timeout" from="Timer" to="RigidBody2D" method="_on_timer_timeout"]
+[connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]
