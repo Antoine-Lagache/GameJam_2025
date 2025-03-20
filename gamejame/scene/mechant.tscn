@@ -1,4 +1,4 @@
-[gd_scene load_steps=4 format=3 uid="uid://m1afoyilmxdp"]
+[gd_scene load_steps=4 format=3 uid="uid://bixsisomkggkx"]
 
 [ext_resource type="Texture2D" uid="uid://b84o0xaklfcsc" path="res://sprites/mechant.png" id="1_to7ja"]
 [ext_resource type="Script" uid="uid://db1rl4it33xcl" path="res://script/mechant.gd" id="2_7bvp0"]
@@ -19,6 +19,7 @@ position = Vector2(0, 1)
 shape = SubResource("CircleShape2D_7bvp0")
 
 [node name="Timer" type="Timer" parent="."]
+wait_time = 0.7
 autostart = true
 
 [connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]
