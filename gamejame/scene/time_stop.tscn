@@ -1,8 +1,16 @@
-[gd_scene load_steps=2 format=3 uid="uid://e7kxq7wbgf6q"]
+[gd_scene load_steps=3 format=3 uid="uid://e7kxq7wbgf6q"]
 
 [ext_resource type="Texture2D" uid="uid://cf2a4kh32yv8h" path="res://sprites/time_stop.png" id="1_nys4h"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_pnf1x"]
+radius = 79.0569
 
 [node name="Time_stop" type="Node2D"]
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
 texture = ExtResource("1_nys4h")
+
+[node name="Area2D" type="Area2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
+shape = SubResource("CircleShape2D_pnf1x")
