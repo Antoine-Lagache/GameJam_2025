@@ -10,6 +10,7 @@ func loose_pv():
 	$CanvasLayer/Health_bar.health += -1
 
 func _ready() -> void:
+	add_to_group("player")
 	position = start_position
 
 func _physics_process(_delta: float) -> void:

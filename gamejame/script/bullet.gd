@@ -7,7 +7,7 @@ var angular_velocity : float = 0.0
 signal hit_player
 
 func _ready():
-	connect("body_entered", _on_area_2d_body_entered)
+	add_to_group("bullet")
 	
 func _physics_process(delta: float) -> void:
 	var direction_vector = Vector2(cos(direction),sin(direction))
@@ -25,6 +25,5 @@ func test_exit_screen():
 
 func _on_area_2d_body_entered(body: Node2D) -> void:
 	if body.is_in_group("player"):
-		print("a")
 		emit_signal("hit_player", body)
 		queue_free()

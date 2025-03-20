@@ -5,6 +5,7 @@ extends Node2D
 signal hit_player
 
 func _ready():
+	add_to_group("mechant")
 	var screen = DisplayServer.screen_get_size()
 	position = Vector2(screen.x/2, screen.y/2)
 	
@@ -16,7 +17,6 @@ func _on_timer_timeout() -> void:
 	var angle = randf_range(0, 2 * PI)
 	for i in range(10):
 		var new_bullet:Node = bullet.instantiate()
-		new_bullet.add_to_group("bullet")
 		new_bullet.connect("hit_player", on_hit_player)
 		new_bullet.speed = 600
 		new_bullet.direction =  2 * PI / 10 * i + angle
@@ -24,7 +24,6 @@ func _on_timer_timeout() -> void:
 		add_child(new_bullet)
 	for i in range(10):
 		var new_bullet:Node = bullet.instantiate()
-		new_bullet.add_to_group("bullet")
 		new_bullet.connect("hit_player", on_hit_player)
 		new_bullet.speed = 600
 		new_bullet.direction =  2 * PI / 10 * (i + 0.5) + angle
