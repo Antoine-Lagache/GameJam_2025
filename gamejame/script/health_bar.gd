@@ -15,3 +15,4 @@ func _physics_process(_delta: float) -> void:
 	$green.scale.x = health/max_health
 	if health < 0:
 		health = 0
+	$Label.text = str(health) + "/" + str(max_health)

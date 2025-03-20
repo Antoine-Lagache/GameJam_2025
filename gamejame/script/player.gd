@@ -7,7 +7,7 @@ var screen_size = DisplayServer.screen_get_size()
 const size_player = Vector2(10,10)
 
 func loose_pv():
-	pass
+	$CanvasLayer/Health_bar.health += -1
 
 func _ready() -> void:
 	print(get_class())

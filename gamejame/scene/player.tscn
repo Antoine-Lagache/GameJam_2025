@@ -1,6 +1,5 @@
 [gd_scene load_steps=5 format=3 uid="uid://ceov563nujslq"]
 
-
 [ext_resource type="Script" uid="uid://bsa4bkgiml488" path="res://script/player.gd" id="1_xo3ru"]
 [ext_resource type="Texture2D" uid="uid://doae567ean0r2" path="res://sprites/player.png" id="2_hjaqi"]
 [ext_resource type="PackedScene" uid="uid://lmckkoynou7k" path="res://scene/health_bar.tscn" id="3_fvtld"]
@@ -14,7 +13,9 @@ script = ExtResource("1_xo3ru")
 shape = SubResource("RectangleShape2D_xo3ru")
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
+scale = Vector2(1.865, 2)
 texture = ExtResource("2_hjaqi")
 
-[node name="Health_bar" parent="." instance=ExtResource("3_fvtld")]
-position = Vector2(-10, 26)
+[node name="CanvasLayer" type="CanvasLayer" parent="."]
+
+[node name="Health_bar" parent="CanvasLayer" instance=ExtResource("3_fvtld")]
