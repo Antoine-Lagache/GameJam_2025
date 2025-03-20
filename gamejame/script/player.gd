@@ -10,7 +10,6 @@ func loose_pv():
 	$CanvasLayer/Health_bar.health += -1
 
 func _ready() -> void:
-	print(get_class())
 	position = start_position
 
 func _physics_process(_delta: float) -> void:
@@ -29,11 +28,5 @@ func _physics_process(_delta: float) -> void:
 		position.y = screen_size.y-size_player.y
 		velocity.y = -abs(-velocity.y)
 	velocity = direction*SPEED
-	for i in get_slide_collision_count():
-		var collision:Node = get_slide_collision(i).get_collider()
-		if collision.get_tree().root.name == "mechant":
-			loose_pv()
-		
 	
-
 	move_and_slide()

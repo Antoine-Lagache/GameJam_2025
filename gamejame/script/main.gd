@@ -5,7 +5,9 @@ extends Node
 
 
 func _ready():
-	var bbeg = mechant.instantiate()
-	var hero = player.instantiate()
+	var bbeg:Node = mechant.instantiate()
+	var hero:Node = player.instantiate()
+	bbeg.add_to_group("mechant")
+	hero.add_to_group("player")
 	add_child(bbeg)
 	add_child(hero)
