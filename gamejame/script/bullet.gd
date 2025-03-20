@@ -1,7 +1,7 @@
 extends Node2D
 
-var speed : float # nb pixel / seconde
-var direction : float
+var speed : float = 0.0 # nb pixel / seconde
+var direction : float = 0.0
 
 
 
@@ -11,6 +11,9 @@ func _ready():
 func _physics_process(delta: float) -> void:
 	var direction_vector = Vector2(cos(direction),sin(direction))
 	global_position += speed*direction_vector
+	test_exit_screen()
 	
-func _on_visible_on_screen_notifier_2d_screen_exited():
-	queue_free()
+func test_exit_screen():
+	var screen = DisplayServer.screen_get_size()
+	if (global_position.x < -100 or global_position.x > 100 + screen.x or global_position.y < -100 or global_position.y > 100 + screen.y):
+		queue_free()
