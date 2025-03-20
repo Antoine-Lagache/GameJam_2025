@@ -31,7 +31,7 @@ func _physics_process(_delta: float) -> void:
 	velocity = direction*SPEED
 	for i in get_slide_collision_count():
 		var collision:Node = get_slide_collision(i).get_collider()
-		if collision.is_in_group("bullet"):
+		if collision.get_tree().root.name == "mechant":
 			loose_pv()
 		
 	

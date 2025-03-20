@@ -4,17 +4,20 @@
 [ext_resource type="Texture2D" uid="uid://doae567ean0r2" path="res://sprites/player.png" id="2_hjaqi"]
 [ext_resource type="PackedScene" uid="uid://lmckkoynou7k" path="res://scene/health_bar.tscn" id="3_fvtld"]
 
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_xo3ru"]
+[sub_resource type="CircleShape2D" id="CircleShape2D_fvtld"]
+radius = 38.0
 
 [node name="Player" type="CharacterBody2D"]
 script = ExtResource("1_xo3ru")
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
-shape = SubResource("RectangleShape2D_xo3ru")
-
 [node name="Sprite2D" type="Sprite2D" parent="."]
-scale = Vector2(1.865, 2)
+position = Vector2(0.499992, 1.5)
+scale = Vector2(1.54, 1.54)
 texture = ExtResource("2_hjaqi")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(-0.5, 0.5)
+shape = SubResource("CircleShape2D_fvtld")
 
 [node name="CanvasLayer" type="CanvasLayer" parent="."]
 
