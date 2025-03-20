@@ -1,4 +1,4 @@
-[gd_scene load_steps=4 format=3 uid="uid://5kfsarhxidag"]
+[gd_scene load_steps=4 format=3 uid="uid://buqc2qb5ffm8d"]
 
 [ext_resource type="Texture2D" uid="uid://b84o0xaklfcsc" path="res://sprites/mechant.png" id="1_to7ja"]
 [ext_resource type="Script" uid="uid://db1rl4it33xcl" path="res://script/mechant.gd" id="2_7bvp0"]
