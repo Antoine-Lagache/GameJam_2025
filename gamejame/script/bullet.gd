@@ -1,7 +1,7 @@
 extends Node2D
 
-var speed = 10.0 # nb pixel / seconde
-var direction : float = 0.5
+var speed : float # nb pixel / seconde
+var direction : float
 
 
 
