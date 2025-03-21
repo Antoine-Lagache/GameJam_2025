@@ -20,6 +20,8 @@ func start_pattern(id:int) -> void:
 			pattern_1()
 		2:
 			pattern_2()
+		3:
+			pattern_3()
 		_:
 			print("idk what happened, but you are trying to use a non existent pattern")
 			
@@ -52,3 +54,12 @@ func pattern_2():
 				new_bullet.direction = angle + i*2*PI/3
 				add_child(new_bullet)
 			angle += 1/(4*PI)
+			
+func pattern_3(): # slow homing
+	while(pattern_id == 3):
+		await get_tree().create_timer(1.0).timeout # on veut faire un tour en une seconde
+		if len(get_tree().get_nodes_in_group("bullet")) < bullet_limit and Global.time_speed:
+			var new_bullet:Node = bullet.instantiate()
+			new_bullet.speed = 200
+			new_bullet.homing = true
+			add_child(new_bullet)

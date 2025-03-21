@@ -9,7 +9,7 @@ func _ready():
 	add_to_group("mechant")
 	var screen = DisplayServer.window_get_size()
 	position = Vector2(screen.x/2, screen.y/2)
-	pattern.pattern_id=2
+	pattern.pattern_id=3
 	add_child(pattern)
 	
 func _physics_process(_delta: float) -> void:
