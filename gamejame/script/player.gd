@@ -3,7 +3,7 @@ extends CharacterBody2D
 
 const SPEED = 300.0
 const start_position = Vector2(300, 300)
-var screen_size = DisplayServer.screen_get_size()
+var screen_size = DisplayServer.window_get_size()
 const size_player = Vector2(10,10)
 
 func loose_pv():

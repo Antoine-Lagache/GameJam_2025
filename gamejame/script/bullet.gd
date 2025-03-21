@@ -16,7 +16,7 @@ func _physics_process(delta: float) -> void:
 		test_exit_screen()
 	
 func test_exit_screen():
-	var screen = DisplayServer.screen_get_size()
+	var screen = DisplayServer.window_get_size()
 	if (global_position.x < -10 or global_position.x > 10 + screen.x or global_position.y < -10 or global_position.y > 10 + screen.y):
 		queue_free()
 

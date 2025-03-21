@@ -3,7 +3,7 @@ extends Node2D
 var time_stop = load("res://scene/time_stop.tscn")
 var player:Node
 var mechant:Node
-var screen = DisplayServer.screen_get_size()
+var screen = DisplayServer.window_get_size()
 var dist_min = 150
 
 
