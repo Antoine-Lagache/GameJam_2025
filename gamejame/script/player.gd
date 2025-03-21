@@ -1,5 +1,6 @@
 extends CharacterBody2D
 
+@onready var hero_hit: AudioStreamPlayer = $HeroHit
 
 const SPEED = 500.0
 const start_position = Vector2(300, 300)
@@ -7,6 +8,7 @@ var screen_size = DisplayServer.window_get_size()
 const size_player = Vector2(10,10)
 
 func loose_pv():
+	hero_hit.play()
 	$CanvasLayer/Health_bar.health += -1
 
 func _ready() -> void:
