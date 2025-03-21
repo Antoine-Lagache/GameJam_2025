@@ -26,4 +26,3 @@ shape = SubResource("CircleShape2D_fvtld")
 
 [node name="HeroHit" type="AudioStreamPlayer" parent="."]
 stream = ExtResource("4_ct4mp")
-bus = &"Hero_hit"

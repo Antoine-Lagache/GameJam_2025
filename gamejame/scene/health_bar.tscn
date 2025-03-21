@@ -3,6 +3,7 @@
 [ext_resource type="Script" uid="uid://bl5jv4s2inf3u" path="res://script/health_bar.gd" id="1_ypsry"]
 
 [node name="Health_bar" type="Node2D"]
+z_index = 1
 script = ExtResource("1_ypsry")
 
 [node name="red" type="ColorRect" parent="."]

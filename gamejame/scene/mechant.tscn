@@ -1,7 +1,8 @@
-[gd_scene load_steps=4 format=3 uid="uid://bixsisomkggkx"]
+[gd_scene load_steps=5 format=3 uid="uid://bixsisomkggkx"]
 
 [ext_resource type="Texture2D" uid="uid://dvgjro8yi6tjy" path="res://sprites/mechant.png" id="1_to7ja"]
 [ext_resource type="Script" uid="uid://db1rl4it33xcl" path="res://script/mechant.gd" id="2_7bvp0"]
+[ext_resource type="PackedScene" uid="uid://lmckkoynou7k" path="res://scene/health_bar.tscn" id="3_ths1h"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_7bvp0"]
 radius = 48.0416
@@ -24,6 +25,13 @@ shape = SubResource("CircleShape2D_7bvp0")
 [node name="Timer" type="Timer" parent="."]
 wait_time = 0.7
 autostart = true
+
+[node name="CanvasLayer" type="CanvasLayer" parent="."]
+
+[node name="Health_bar" parent="CanvasLayer" instance=ExtResource("3_ths1h")]
+position = Vector2(1420, 0)
+max_health = 5
+health = 5
 
 [connection signal="body_entered" from="Area2D" to="." method="_on_area_2d_body_entered"]
 [connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]

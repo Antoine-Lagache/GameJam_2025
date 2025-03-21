@@ -5,13 +5,14 @@ var player:Node
 var mechant:Node
 var screen = DisplayServer.window_get_size()
 var dist_min = 150
-
+@onready var shader_material = $Inversion_shader.material
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
 	player =  get_tree().get_nodes_in_group("player")[0]
 	mechant =  get_tree().get_nodes_in_group("mechant")[0]
 	$Timer_bar.position.y = screen.y - 30
+	$Inversion_shader.size = screen
 	$Timer_bar.visible = false
 	spawn_time_stop()
 
@@ -31,9 +32,19 @@ func spawn_time_stop():
 
 func start_timer():
 	$Timer.start()
+	shader_material.set_shader_parameter("invert", true)
 	$Timer_bar.visible = true
 
 func _on_timer_timeout() -> void:
 	Global.time_speed = 1.0
 	$Timer_bar.visible = false
+	shader_material.set_shader_parameter("invert", false)
 	spawn_time_stop()
+	
+func on_mechant_hit():
+	Global.time_speed = 1.0
+	$Timer_bar.visible = false
+	$Timer.stop()
+	shader_material.set_shader_parameter("invert", false)
+	spawn_time_stop()
+	player.position = Vector2(100,100)
