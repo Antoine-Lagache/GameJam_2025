@@ -11,12 +11,13 @@ var dist_min = 150
 func _ready() -> void:
 	player =  get_tree().get_nodes_in_group("player")[0]
 	mechant =  get_tree().get_nodes_in_group("mechant")[0]
+	$Timer_bar.visible = false
 	spawn_time_stop()
 
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _physics_process(_delta: float) -> void:
-	pass
+	$Timer_bar/blue.scale.x = $Timer.time_left/$Timer.wait_time
 
 func spawn_time_stop():
 	while true:
@@ -27,6 +28,11 @@ func spawn_time_stop():
 			add_child(new_time_stop)
 			break
 
-func on_time_stop():
-	Global.time_speed = 0.
-	
+func start_timer():
+	$Timer.start()
+	$Timer_bar.visible = true
+
+func _on_timer_timeout() -> void:
+	Global.time_speed = 1.0
+	$Timer_bar.visible = false
+	spawn_time_stop()

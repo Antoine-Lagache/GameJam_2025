@@ -14,7 +14,7 @@ func _physics_process(_delta: float) -> void:
 
 
 func _on_timer_timeout() -> void:
-	if len(get_tree().get_nodes_in_group("bullet")) < bullet_limit:
+	if len(get_tree().get_nodes_in_group("bullet")) < bullet_limit and Global.time_speed:
 		var angle = randf_range(0, 2 * PI)
 		for i in range(10):
 			var new_bullet:Node = bullet.instantiate()
