@@ -6,9 +6,6 @@ var mechant:Node
 var screen = DisplayServer.screen_get_size()
 var dist_min = 150
 
-var  time_speed:float = 1.0
-signal send_time_speed
-
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
@@ -18,7 +15,7 @@ func _ready() -> void:
 
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
-func _physics_process(delta: float) -> void:
+func _physics_process(_delta: float) -> void:
 	pass
 
 func spawn_time_stop():
@@ -27,11 +24,9 @@ func spawn_time_stop():
 		if max(spawn_pos.distance_to(player.position),spawn_pos.distance_to(mechant.position))>dist_min:
 			var new_time_stop = time_stop.instantiate()
 			new_time_stop.position = spawn_pos
-			new_time_stop.connect("time_stop", on_time_stop)
 			add_child(new_time_stop)
 			break
 
 func on_time_stop():
-	time_speed = 0.
-	emit_signal("send_time_speed", time_speed)
+	Global.time_speed = 0.
 	

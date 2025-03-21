@@ -5,7 +5,6 @@ const SPEED = 300.0
 const start_position = Vector2(300, 300)
 var screen_size = DisplayServer.screen_get_size()
 const size_player = Vector2(10,10)
-var time_speed:float = 1.0
 
 func loose_pv():
 	$CanvasLayer/Health_bar.health += -1

@@ -3,16 +3,15 @@ extends Node2D
 var speed : float = 0.0 # nb pixel / seconde
 var direction : float = 0.0
 var angular_velocity : float = 0.0
-var time_speed:float = 1.0
 
 
 func _ready():
 	add_to_group("bullet")
 	
 func _physics_process(delta: float) -> void:
-	if time_speed:
+	if Global.time_speed:
 		var direction_vector = Vector2(cos(direction),sin(direction))
-		global_position += speed*direction_vector*delta*time_speed #pour que se soit compatible à différents frame rate
+		global_position += speed*direction_vector*delta*Global.time_speed
 		direction += angular_velocity
 		test_exit_screen()
 	

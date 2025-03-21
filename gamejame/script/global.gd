@@ -1,17 +1,12 @@
-extends Node2D
+extends Node
 
+var time_speed:float = 1.0 #var dispo sur toutes les scènes avec Global.time_speed
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
-	add_to_group("time_stop")
+	time_speed = 1.0
 
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(_delta: float) -> void:
 	pass
-
-
-func _on_area_2d_body_entered(body: Node2D) -> void:
-	if body.is_in_group("player"):
-		Global.time_speed = 0.
-		queue_free()

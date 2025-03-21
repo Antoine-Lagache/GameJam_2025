@@ -2,7 +2,6 @@ extends Node2D
 
 
 @onready var bullet = load("res://scene/bullet.tscn")
-var time_speed:float = 1.0
 var bullet_limit:int = 100
 
 func _ready():
@@ -10,13 +9,11 @@ func _ready():
 	var screen = DisplayServer.screen_get_size()
 	position = Vector2(screen.x/2, screen.y/2)
 	
-func _physics_process(delta: float) -> void:
-	for bullets in get_tree().get_nodes_in_group("bullet"):
-		bullets.time_speed = time_speed
+func _physics_process(_delta: float) -> void:
+	pass
 
 
 func _on_timer_timeout() -> void:
-	print(len(get_tree().get_nodes_in_group("bullet")))
 	if len(get_tree().get_nodes_in_group("bullet")) < bullet_limit:
 		var angle = randf_range(0, 2 * PI)
 		for i in range(10):
