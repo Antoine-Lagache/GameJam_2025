@@ -22,6 +22,20 @@ func start_pattern(id:int) -> void:
 			pattern_2()
 		3:
 			pattern_3()
+		4:
+			pattern_4()
+		5:
+			pass
+		6:
+			pass
+		7:
+			pass
+		8:
+			pass
+		9:
+			pass
+		10:
+			pass
 		_:
 			print("idk what happened, but you are trying to use a non existent pattern")
 			
@@ -63,3 +77,23 @@ func pattern_3(): # slow homing
 			new_bullet.speed = 200
 			new_bullet.homing = true
 			add_child(new_bullet)
+			
+func pattern_4(): # weird azzayu's teleport idea
+	while(pattern_id == 4):
+		await get_tree().create_timer(0.1).timeout
+		if len(get_tree().get_nodes_in_group("bullet")) < bullet_limit and Global.time_speed:
+			var color = Color(randf_range(0,1),randf_range(0,1),randf_range(0,1))
+			var new_bullet:Node = bullet.instantiate()
+			new_bullet.speed = 600
+			new_bullet.color = color
+			new_bullet.direction = randf_range(0.0,2*PI)
+			var bro:Node = bullet.instantiate()
+			bro.speed = 600
+			bro.color = color
+			bro.direction = randf_range(0.0,2*PI)
+			bro.is_dual = true
+			new_bullet.is_dual = true
+			bro.dual = new_bullet
+			new_bullet.dual = bro
+			add_child(new_bullet)
+			add_child(bro)

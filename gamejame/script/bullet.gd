@@ -6,10 +6,15 @@ var direction : float = 0.0
 var angular_velocity : float = 0.0
 var homing = false
 var screen = DisplayServer.window_get_size()
+var is_dual = false
+var dual
 
+var color = Color("Blue")
+@onready var sprite:Sprite2D = $"./Sprite2D"
 
 func _ready():
-	player =  get_tree().get_nodes_in_group("player")[0]
+	player = get_tree().get_nodes_in_group("player")[0]
+	sprite.self_modulate = color
 	add_to_group("bullet")
 	
 func _physics_process(delta: float) -> void:
@@ -31,4 +36,7 @@ func angle_to_player(player):
 func _on_area_2d_body_entered(body: Node2D) -> void:
 	if body.is_in_group("player"):
 		body.loose_pv()
+		if is_dual && is_instance_valid(dual):
+			dual.is_dual = false
+			body.position = dual.position
 		queue_free()
