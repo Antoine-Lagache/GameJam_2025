@@ -1,1 +1,35 @@
 # GameJam_2025
+
+# CHOSES A FAIRE : 
+- TEMPS
+  - Faire une scène temps qui gère l'arrêt dans la scène main ; en fait faudrait faire une variable time vraiment globale mais je sais pas trop comment faire ![](status_colour/status_not_done.png)
+  - Faire la barre de cooldown pour le temps, à coté de la barre de vie ? Avec l'icone pour indiquer ? ![](status_colour/status_not_done.png)
+  - Faire des visuels pour l'arrêt du temps ; l'icone est très bien y'a pas de problème, mais je pense qu'on pourrait mettre quelque chose de plus voyant ; Un classique c'est de mettre en noir et blanc tout ce qui est affecté par l'arrêt du temps, à voir si c'est possible facilement (et au pire on refait des sprites) ![](status_colour/status_not_done.png)
+- PATTERNS ![](status_colour/status_in_progress.png)
+  - Faire plus de patterns différents ; à voir si on les trie par difficulté ou si on fait un ensemble de patterns random ![](status_colour/status_not_done.png)
+  - Diviser les patterns et le distinguer du boss ; on peut pas avoir la fonction qui fait spawn tous les bullets dans le script du boss ; Il faudrait faire une scène pattern avec tous les patterns qui est ensuite appelée par le boss, voire une scène par pattern ![](status_colour/status_done.png) 
+- BULLETS ![](status_colour/status_not_done.png)
+  - Faire des bullets plus variés ; globalement rajouter des options pour modifier la taille, la couleur, pour faire de l'accélération, pour faire des bullets actifs que quand le temps est arrêté, ou vice versa... ![](status_colour/status_not_done.png)
+  - Du coup si je dis pas de bêtises si on veut changer la couleur facilement faut que le sprite d'origine soit blanc ? Je suis pas sûr ![](status_colour/status_not_done.png)
+  - à voir si on a le temps, mais peut-être faire d'autres types de bullet (même si on a largement assez à faire avec des boules) ![](status_colour/status_not_done.png)
+- BOSS ![](status_colour/status_not_done.png)
+  - Lui donner une barre de vie ![](status_colour/status_not_done.png)
+  - Lui donner la possibilité de bouger ? J'aime pas trop cette idée, mais si ça vous branche allez-y ![](status_colour/status_not_done.png)
+- PLAYER ![](status_colour/status_not_done.png)
+  - Je trouve le joueur trop lent, en particulier si il doit aller à l'autre bout de l'écran pour choper la zone de dégâts. Une solution classique pour ça est de donner un bouton de focus(généralement shift), qui tant qu'il est appuyé rend le joueur plus lent pour des esquives plus précises ![](status_colour/status_not_done.png)
+  - Faire des I-frames ![](status_colour/status_not_done.png)
+  - gérer les dégâts venant des bullets ![](status_colour/status_not_done.png)
+## CHOSES A FAIRE (PARTIE 2)
+- MISC ![](status_colour/status_not_done.png)
+  - Faire un écran titre ; rien de bien fou, juste Start, Credits et quitter ![](status_colour/status_not_done.png)
+  - Mettre de la musique et des effets sonores ; probablement trouvés sur Internet ![](status_colour/status_not_done.png)
+  - Faire de meilleurs sprites pour le player et le boss (même si j'adorerais les laisser comme ça) ![](status_colour/status_not_done.png)
+  - Faire le background, et des visuels pour les écrant titre et de Game Over ![](status_colour/status_not_done.png)
+  - ⚠️URGENT⚠️ Faire la mécanique pour faire des dégâts au boss ; Faudrait aussi déterminer ce que le joueur viens chopper pour faire des dégâts (un sablier, un cercle basique, un flingue... ?) ![](status_colour/status_not_done.png)
+  - Faire un plot ; Rien de bien fou encore une fois, mais si on peut au moins avoir trois lignes de plot qui expliquent le pouvoir et pourquoi le perso se bat, ça pourrait être pas mal (ça me semble important) ![](status_colour/status_not_done.png)
+  - (Peu important) Rajouter des dialogues ? à voir ![](status_colour/status_not_done.png)
+  - Faire un écran de Game Over (à priori avec juste un bouton de retour à l'écran titre) ![](status_colour/status_not_done.png)
+  - Mettre une touche debug pour rendre le perso invincible, ça sera utile pour tester et au cas où le jury soit pas ouf (ou alors, une touche qui te heal, si c'est plus facile à programmer) (mais c'est une touche debug à ne pas utiliser dans un gameplay normal) ![](status_colour/status_not_done.png)
+  - Faire l'exportation itch.io ; Là dedans je comprends l'exportation en elle-même, et l'explication du plot et des contrôles ; c'est une étape à pas sous-estimer, donc on commence à s'inquiéter pour ça aux alentours de dimanche 18h ![](status_colour/status_not_done.png)
+
+Voilà je crois que j'ai rien oublié, si vous avez d'autres idées hésitez-pas, et de même prévenez moi quand vous avez fini un des trucs là que je puisse l'enlever
