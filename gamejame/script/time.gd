@@ -11,6 +11,7 @@ var dist_min = 150
 func _ready() -> void:
 	player =  get_tree().get_nodes_in_group("player")[0]
 	mechant =  get_tree().get_nodes_in_group("mechant")[0]
+	$Timer_bar.position.y = screen.y - 30
 	$Timer_bar.visible = false
 	spawn_time_stop()
 
