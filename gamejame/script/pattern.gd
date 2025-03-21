@@ -23,7 +23,7 @@ func start_pattern(id:int) -> void:
 			
 func pattern_1():
 	while(pattern_id == 1):
-		await get_tree().create_timer(0.5).timeout # on attend une demi seconde
+		await get_tree().create_timer(1.0).timeout # on attend une demi seconde
 		if len(get_tree().get_nodes_in_group("bullet")) < bullet_limit and Global.time_speed:
 			var angle = randf_range(0, 2 * PI)
 			for i in range(10):
