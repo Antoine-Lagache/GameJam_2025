@@ -1,8 +1,9 @@
 # GameJam_2025
 
 # CHOSES A FAIRE : 
-- TEMPS ![](status_colour/status_not_done.png)
-  - Faire une scène temps qui gère l'arrêt dans la scène main ; en fait faudrait faire une variable time vraiment globale mais je sais pas trop comment faire ![](status_colour/status_not_done.png)
+<<<<<<< HEAD
+- TEMPS ![](status_colour/status_in_progress.png)
+  - Faire une scène temps qui gère l'arrêt dans la scène main ; en fait faudrait faire une variable time vraiment globale mais je sais pas trop comment faire ![](status_colour/status_done.png)
   - Faire la barre de cooldown pour le temps, à coté de la barre de vie ? Avec l'icone pour indiquer ? ![](status_colour/status_not_done.png)
   - Faire des visuels pour l'arrêt du temps ; l'icone est très bien y'a pas de problème, mais je pense qu'on pourrait mettre quelque chose de plus voyant ; Un classique c'est de mettre en noir et blanc tout ce qui est affecté par l'arrêt du temps, à voir si c'est possible facilement (et au pire on refait des sprites) ![](status_colour/status_not_done.png)
 - PATTERNS ![](status_colour/status_in_progress.png)
