@@ -9,7 +9,7 @@ var screen = DisplayServer.window_get_size()
 var is_dual = false
 var dual
 
-var color = Color("Blue")
+var color = Color("Red")
 @onready var sprite:Sprite2D = $"./Sprite2D"
 
 func _ready():
