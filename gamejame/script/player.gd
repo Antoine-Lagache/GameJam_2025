@@ -12,6 +12,7 @@ func loose_pv():
 func _ready() -> void:
 	add_to_group("player")
 	position = start_position
+	scale = Vector2(0.7, 0.7)
 
 func _physics_process(_delta: float) -> void:
 	
