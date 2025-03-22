@@ -5,7 +5,7 @@ signal mechant_hit
 var pattern_path = load("res://scene/pattern.tscn")
 var bullet_limit:int = 100
 var pattern = pattern_path.instantiate()
-var max_pattern = 10
+var max_pattern = 11
 @onready var boss_hit_sound: AudioStreamPlayer2D = $BossHitSound
 var number_of_flash: int
 

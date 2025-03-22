@@ -41,6 +41,26 @@ func start_pattern(id:int) -> void:
 			pattern_9()
 		10:
 			pattern_10()
+		11:
+			pattern_11()
+		12:
+			pass
+		13:
+			pass
+		14:
+			pass
+		15:
+			pass
+		16:
+			pass
+		17:
+			pass
+		18:
+			pass
+		19:
+			pass
+		20:
+			pass
 		_:
 			print("idk what happened, but you are trying to use a non existent pattern")
 			
@@ -120,9 +140,11 @@ func pattern_5():
 	var angle = randf_range(0, 2 * PI)
 	while(pattern_id == 5):
 		if len(get_tree().get_nodes_in_group("bullet")) < bullet_limit and Global.time_speed:
+			var colors = ["red","magenta","blue","yellow","green","cyan"]
 			for i in range(6):
 				var new_bullet:Node = bullet.instantiate()
 				new_bullet.speed = 800
+				new_bullet.color = Color(colors[i])
 				new_bullet.direction = angle + i*2*PI/6
 				add_child(new_bullet)
 			angle += 0.05
@@ -153,6 +175,7 @@ func pattern_7(): # circles
 			for i in range(circle_size):
 				var new_bullet:Node = bullet.instantiate()
 				new_bullet.speed = 400
+				new_bullet.color = Color("yellow")
 				new_bullet.direction = angle + i*2*PI/circle_size
 				new_bullet.position += pos
 				add_child(new_bullet)
@@ -169,22 +192,24 @@ func pattern_8(): # bam
 			for i in range(baam_size):
 				var new_bullet:Node = bullet.instantiate()
 				new_bullet.speed = 400+randi_range(0,300)
+				new_bullet.color = Color(1.0,randf_range(0.,1.),0.)
 				new_bullet.direction = angle + randf_range(-PI/10,PI/10)
 				add_child(new_bullet)
 		await get_tree().create_timer(1).timeout
 		
-func pattern_9():
+func pattern_9(): # spin2win
 	await get_tree().create_timer(0.5).timeout # On evite le spawn kill au chgt de pattern
 	while(pattern_id == 9):
 		if len(get_tree().get_nodes_in_group("bullet")) < bullet_limit and Global.time_speed:
 			var new_bullet:Node = bullet.instantiate()
 			new_bullet.speed = 100
 			new_bullet.direction = randf_range(0, 2 * PI)
+			new_bullet.color = Color("green")
 			new_bullet.angular_velocity = 0.005
 			add_child(new_bullet)
 		await get_tree().create_timer(0.05).timeout
 		
-func pattern_10(): # circles
+func pattern_10(): # fat circle
 	await get_tree().create_timer(0.5).timeout # On evite le spawn kill au chgt de pattern
 	while(pattern_id == 10):
 		if len(get_tree().get_nodes_in_group("bullet")) < bullet_limit and Global.time_speed:
@@ -193,13 +218,24 @@ func pattern_10(): # circles
 			for i in range(circle_size):
 				var new_bullet:Node = bullet.instantiate()
 				new_bullet.speed = 200
+				new_bullet.color = Color("white")
 				new_bullet.direction = angle + i*2*PI/circle_size
 				add_child(new_bullet)
 		await get_tree().create_timer(3.0).timeout
 		
-func pattern_11():
+func pattern_11(): # fatter circle
 	await get_tree().create_timer(0.5).timeout # On evite le spawn kill au chgt de pattern
 	while(pattern_id == 11):
 		if len(get_tree().get_nodes_in_group("bullet")) < bullet_limit and Global.time_speed:
-			pass
+			var circle_size = 90
+			var angle = randf_range(0,2*PI)
+			for i in range(circle_size):
+				var new_bullet:Node = bullet.instantiate()
+				new_bullet.speed = 300
+				new_bullet.color = Color("blue")
+				if i%6 >= 3:
+					new_bullet.speed = 250
+					new_bullet.color = Color("cyan")
+				new_bullet.direction = angle + i*2*PI/circle_size
+				add_child(new_bullet)
 		await get_tree().create_timer(3.0).timeout
