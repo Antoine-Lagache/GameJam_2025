@@ -1,7 +1,6 @@
 # GameJam_2025
 
 # CHOSES A FAIRE : 
-<<<<<<< HEAD
 - TEMPS ![](status_colour/status_done.png)
   - Faire une scène temps qui gère l'arrêt dans la scène main ; en fait faudrait faire une variable time vraiment globale mais je sais pas trop comment faire ![](status_colour/status_done.png)
   - Faire la barre de cooldown pour le temps, à coté de la barre de vie ? Avec l'icone pour indiquer ? ![](status_colour/status_done.png)
