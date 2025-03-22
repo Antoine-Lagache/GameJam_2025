@@ -15,11 +15,22 @@ func loose_pv():
 	if i_frames <= 0:
 		hero_hit.play()
 		$Sprite2D.material.set_shader_parameter("flash_modifier", 0.7)
-		$Flash_Timer.start()
+		# $Flash_Timer.start()
+		flash_start()
 		$CanvasLayer/Health_bar.health += -1
 		if $CanvasLayer/Health_bar.health == 0:
 			get_tree().change_scene_to_file("res://scene/gameover.tscn")
 		i_frames = 30
+		
+func flash_start():
+	var number_of_flash = 3
+	for i in range(number_of_flash):
+		$Flash_Timer.start(0.08)
+		$Sprite2D.material.set_shader_parameter("flash_modifier", 0.6)
+		await $Flash_Timer.timeout
+		$Sprite2D.material.set_shader_parameter("flash_modifier", 0.0)
+		$Flash_Timer.start(0.12)
+		await $Flash_Timer.timeout
 
 func _ready() -> void:
 	add_to_group("player")

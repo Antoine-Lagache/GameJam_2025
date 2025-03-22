@@ -44,7 +44,7 @@ func start_pattern(id:int) -> void:
 		11:
 			pattern_11()
 		12:
-			pass
+			pattern_12()
 		13:
 			pass
 		14:
@@ -242,13 +242,14 @@ func pattern_11(): # fatter circle
 		
 func pattern_12(): # Time stop? dont care
 	await get_tree().create_timer(0.5).timeout # On evite le spawn kill au chgt de pattern
+	var angle = randf_range(0,2*PI)
 	while(pattern_id == 12):
-		if len(get_tree().get_nodes_in_group("bullet")) < bullet_limit and Global.time_speed:
+		if len(get_tree().get_nodes_in_group("bullet")) < bullet_limit:
 			var circle_size = 7
-			var angle = randf_range(0,2*PI)
 			for i in range(circle_size):
 				var new_bullet:Node = bullet.instantiate()
 				new_bullet.speed = 300
+				new_bullet.is_time_immune = 1.
 				new_bullet.color = Color(0.,0.,0.,0.5)
 				new_bullet.direction = angle + i*2*PI/circle_size
 				add_child(new_bullet)
