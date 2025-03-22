@@ -61,6 +61,8 @@ func start_pattern(id:int) -> void:
 			pass
 		20:
 			pass
+		999:
+			pattern_999()
 		_:
 			print("idk what happened, but you are trying to use a non existent pattern")
 			
@@ -302,4 +304,23 @@ func pattern_14(): # grand gignol zano kaichi
 					
 			angle1 += 0.02
 			angle2 -= 0.02
-		await get_tree().create_timer(0.1).timeout
+		await get_tree().create_timer(0.15).timeout
+		
+func pattern_999(): # n'activez jamais ça
+	await get_tree().create_timer(0.5).timeout # On evite le spawn kill au chgt de pattern
+	var angle = randf_range(0,2*PI)
+	var t = 0
+	while true:
+		pattern_id = 999
+		if len(get_tree().get_nodes_in_group("bullet")) < bullet_limit or true: # ptdr
+			var circle_size = 7
+			for i in range(circle_size):
+				var new_bullet:Node = bullet.instantiate()
+				new_bullet.speed = 600
+				new_bullet.color = Color("black")
+				new_bullet.is_time_immune = 1.
+				add_child(new_bullet)
+				new_bullet.direction = angle + 2*i*PI/circle_size
+			angle += sin(t*PI/(360*2))
+			t += 1
+		await get_tree().create_timer(0.01).timeout
