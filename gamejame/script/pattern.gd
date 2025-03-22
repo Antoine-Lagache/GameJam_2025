@@ -73,6 +73,7 @@ func pattern_2():
 			for i in range(3):
 				var new_bullet:Node = bullet.instantiate()
 				new_bullet.speed = 100
+				new_bullet.color = Color("pink")
 				new_bullet.direction = angle + i*2*PI/3
 				add_child(new_bullet)
 			angle += 1/(2*PI)
@@ -86,6 +87,7 @@ func pattern_3(): # slow homing
 		if len(get_tree().get_nodes_in_group("bullet")) < bullet_limit and Global.time_speed:
 			var new_bullet:Node = bullet.instantiate()
 			new_bullet.speed = 300
+			new_bullet.color = Color("cyan")
 			new_bullet.homing = true
 			add_child(new_bullet)
 		await get_tree().create_timer(1.0).timeout # on veut faire un tour en une seconde
@@ -193,4 +195,11 @@ func pattern_10(): # circles
 				new_bullet.speed = 200
 				new_bullet.direction = angle + i*2*PI/circle_size
 				add_child(new_bullet)
+		await get_tree().create_timer(3.0).timeout
+		
+func pattern_11():
+	await get_tree().create_timer(0.5).timeout # On evite le spawn kill au chgt de pattern
+	while(pattern_id == 11):
+		if len(get_tree().get_nodes_in_group("bullet")) < bullet_limit and Global.time_speed:
+			pass
 		await get_tree().create_timer(3.0).timeout
