@@ -4,6 +4,8 @@ extends Node2D
 var bullet_limit:int = 200
 var pattern_id:int = 1
 
+@onready var big_bullet = load("res://scene/big_bullet.tscn")
+
 
 func _ready():
 	start_pattern(pattern_id)
@@ -25,7 +27,7 @@ func start_pattern(id:int) -> void:
 		4:
 			pattern_4()
 		5:
-			pass
+			pattern_5()
 		6:
 			pass
 		7:
@@ -107,3 +109,16 @@ func pattern_4(): # weird azzayu's teleport idea
 			add_child(new_bullet)
 			add_child(bro)
 		await get_tree().create_timer(0.2).timeout
+
+
+
+func pattern_5(): # big bullet that makes bullets
+	await get_tree().create_timer(0.5).timeout # On evite le spawn kill au chgt de pattern
+	while(pattern_id == 5):
+		for i in range(5):
+			var new_bullet:Node = big_bullet.instantiate()
+			new_bullet.speed = 150
+			new_bullet.direction =  2 * PI / 5 * i
+			new_bullet.angular_velocity = 0.01
+			add_child(new_bullet)
+		await get_tree().create_timer(2.0).timeout

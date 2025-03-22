@@ -22,9 +22,9 @@ func _physics_process(_delta: float) -> void:
 func _on_timer_timeout() -> void:
 	# Un peu wacky mais ça combine les deux pattern
 	# pattern.start_pattern(1+(pattern.pattern_id%2))
-	var new_pattern = randi_range(1,4)
+	var new_pattern = randi_range(1,5)
 	while new_pattern == pattern.pattern_id:
-		new_pattern = randi_range(1,4)
+		new_pattern = randi_range(1,5)
 	pattern.start_pattern(new_pattern)
 
 func _on_area_2d_body_entered(body: Node2D) -> void:
