@@ -38,5 +38,5 @@ func _on_area_2d_body_entered(body: Node2D) -> void:
 		body.loose_pv()
 		if is_dual && is_instance_valid(dual):
 			dual.is_dual = false
-			body.position = dual.position
+			body.position = dual.global_position
 		queue_free()

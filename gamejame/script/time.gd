@@ -5,6 +5,8 @@ var player:Node
 var mechant:Node
 var screen = DisplayServer.window_get_size()
 var dist_min = 150
+var retro_position = Vector2(100,100)
+@onready var player_shade:Sprite2D = $"./Sprite2D"
 @onready var shader_material = $Inversion_shader.material
 
 # Called when the node enters the scene tree for the first time.
@@ -14,6 +16,7 @@ func _ready() -> void:
 	$Timer_bar.position.y = screen.y - 30
 	$Inversion_shader.size = screen
 	$Timer_bar.visible = false
+	player_shade.self_modulate = Color(1,1,1,0.1)
 	spawn_time_stop()
 
 
@@ -26,6 +29,7 @@ func spawn_time_stop():
 		var spawn_pos = Vector2(randf_range(0,screen.x), randf_range(0,screen.y))
 		if max(spawn_pos.distance_to(player.position),spawn_pos.distance_to(mechant.position))>dist_min:
 			var new_time_stop = time_stop.instantiate()
+			retro_position = spawn_pos
 			new_time_stop.position = spawn_pos
 			add_child(new_time_stop)
 			break
@@ -33,18 +37,24 @@ func spawn_time_stop():
 func start_timer():
 	$Timer.start()
 	shader_material.set_shader_parameter("invert", true)
+	player_shade.position = retro_position
+	player_shade.visible = true
 	$Timer_bar.visible = true
 
 func _on_timer_timeout() -> void:
 	Global.time_speed = 1.0
 	$Timer_bar.visible = false
 	shader_material.set_shader_parameter("invert", false)
+	player_shade.visible = false
+	player.position = retro_position
 	spawn_time_stop()
 	
 func on_mechant_hit():
 	Global.time_speed = 1.0
 	$Timer_bar.visible = false
+	player_shade.visible = false
 	$Timer.stop()
 	shader_material.set_shader_parameter("invert", false)
+	player.position = retro_position
 	spawn_time_stop()
-	player.position = Vector2(100,100)
+	
