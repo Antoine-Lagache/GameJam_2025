@@ -19,7 +19,7 @@ texture = ExtResource("1_qwydi")
 shape = SubResource("CircleShape2D_xw300")
 
 [node name="Life_time" type="Timer" parent="."]
-wait_time = 7.0
+wait_time = 12.0
 one_shot = true
 autostart = true
 
