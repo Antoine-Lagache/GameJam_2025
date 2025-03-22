@@ -23,7 +23,7 @@ scale = Vector2(1, 1.47)
 shape = SubResource("CircleShape2D_7bvp0")
 
 [node name="Timer" type="Timer" parent="."]
-wait_time = 0.7
+wait_time = 5.0
 autostart = true
 
 [node name="CanvasLayer" type="CanvasLayer" parent="."]

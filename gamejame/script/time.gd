@@ -27,7 +27,7 @@ func _physics_process(_delta: float) -> void:
 func spawn_time_stop():
 	while true:
 		var spawn_pos = Vector2(randf_range(0,screen.x), randf_range(0,screen.y))
-		if max(spawn_pos.distance_to(player.position),spawn_pos.distance_to(mechant.position))>dist_min:
+		if min(spawn_pos.distance_to(retro_position),spawn_pos.distance_to(mechant.position))>dist_min:
 			var new_time_stop = time_stop.instantiate()
 			retro_position = spawn_pos
 			new_time_stop.position = spawn_pos
