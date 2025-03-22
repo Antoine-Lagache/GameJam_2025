@@ -5,7 +5,7 @@ signal mechant_hit
 var pattern_path = load("res://scene/pattern.tscn")
 var bullet_limit:int = 100
 var pattern = pattern_path.instantiate()
-var max_pattern = 5
+var max_pattern = 6
 @onready var boss_hit_sound: AudioStreamPlayer2D = $BossHitSound
 
 func _ready():
