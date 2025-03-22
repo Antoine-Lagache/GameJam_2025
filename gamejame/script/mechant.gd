@@ -12,7 +12,7 @@ func _ready():
 	add_to_group("mechant")
 	var screen = DisplayServer.window_get_size()
 	position = Vector2(screen.x/2, screen.y/2)
-	pattern.pattern_id=5
+	pattern.pattern_id=6
 	add_child(pattern)
 	$CanvasLayer/Health_bar.max_health = 5
 	$CanvasLayer/Health_bar.position = Vector2(screen.x - $CanvasLayer/Health_bar/red.size.x,0)

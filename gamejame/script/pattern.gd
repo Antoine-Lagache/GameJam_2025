@@ -127,7 +127,7 @@ func pattern_5():
 
 func pattern_6(): # big bullet that makes bullets
 	await get_tree().create_timer(0.5).timeout # On evite le spawn kill au chgt de pattern
-	while(pattern_id == 5):
+	while(pattern_id == 6):
 		for i in range(5):
 			var new_bullet:Node = big_bullet.instantiate()
 			new_bullet.speed = 150

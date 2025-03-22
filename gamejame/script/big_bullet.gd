@@ -44,5 +44,5 @@ func _on_timer_timeout() -> void:
 		new_bullet.speed = 400
 		new_bullet.direction =  2 * PI / 5 * (i + 0.5)
 		new_bullet.angular_velocity = - 0.01
-		new_bullet.scale = Vector2(0.75, 0.75)
+		new_bullet.scale = Vector2(0.5, 0.5)
 		add_child(new_bullet)
