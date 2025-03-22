@@ -1,0 +1,11 @@
+[gd_scene load_steps=5 format=3 uid="uid://ors7uvaq62k2"]
+
+[ext_resource type="PackedScene" uid="uid://by160yhbb0qpo" path="res://scene/menu_button.tscn" id="1_yg46k"]
+[ext_resource type="Texture2D" uid="uid://cy7gdr7katbib" path="res://sprites/normal_button.png" id="2_m1mda"]
+[ext_resource type="Texture2D" uid="uid://c0q4eow01w7ox" path="res://sprites/pressed_button.png" id="3_c1ut4"]
+[ext_resource type="Texture2D" uid="uid://btgdf85wudbpc" path="res://sprites/hovered_button.png" id="4_xab7p"]
+
+[node name="MenuButton" instance=ExtResource("1_yg46k")]
+texture_normal = ExtResource("2_m1mda")
+texture_pressed = ExtResource("3_c1ut4")
+texture_hover = ExtResource("4_xab7p")
