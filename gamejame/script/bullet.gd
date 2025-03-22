@@ -15,6 +15,7 @@ var color = Color("Red")
 func _ready():
 	player = get_tree().get_nodes_in_group("player")[0]
 	sprite.self_modulate = color
+	$Life_time.start()
 	add_to_group("bullet")
 	
 func _physics_process(delta: float) -> void:
@@ -25,6 +26,9 @@ func _physics_process(delta: float) -> void:
 		if homing:
 			direction = angle_to_player(player)
 		test_exit_screen()
+		$Life_time.paused = false
+	else:
+		$Life_time.paused = true
 	
 func test_exit_screen():
 	if (global_position.x < -10 or global_position.x > 10 + screen.x or global_position.y < -10 or global_position.y > 10 + screen.y):
@@ -40,3 +44,7 @@ func _on_area_2d_body_entered(body: Node2D) -> void:
 			dual.is_dual = false
 			body.position = dual.global_position
 		queue_free()
+
+
+func _on_life_time_timeout() -> void:
+	queue_free()
