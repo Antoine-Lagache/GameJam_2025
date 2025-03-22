@@ -28,7 +28,7 @@ func _physics_process(_delta: float) -> void:
 func spawn_time_stop():
 	while true:
 		var spawn_pos = Vector2(randf_range(50,screen.x-50), randf_range(50,screen.y-50))
-		if min(spawn_pos.distance_to(retro_position),spawn_pos.distance_to(mechant.position))>dist_min:
+		if min(min(spawn_pos.distance_to(retro_position),spawn_pos.distance_to(mechant.position)),spawn_pos.distance_to(player.position))>dist_min:
 			for stop in get_tree().get_nodes_in_group("time_stop"):
 				stop.queue_free()
 			var new_time_stop = time_stop.instantiate()
