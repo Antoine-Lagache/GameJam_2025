@@ -15,6 +15,8 @@ func loose_pv():
 	if i_frames <= 0:
 		hero_hit.play()
 		$CanvasLayer/Health_bar.health += -1
+		if $CanvasLayer/Health_bar.health == 0:
+			get_tree().change_scene_to_file("res://scene/gameover.tscn")
 		i_frames = 30
 
 func _ready() -> void:
