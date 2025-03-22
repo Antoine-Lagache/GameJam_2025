@@ -3,7 +3,6 @@ extends Control
 @onready var defeat_sound: AudioStreamPlayer2D = $DefeatSound
 
 func _ready() -> void:
-	print('test')
 	defeat_sound.play()
 
 func _on_main_menu_button_pressed() -> void:

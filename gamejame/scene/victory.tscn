@@ -1,0 +1,77 @@
+[gd_scene load_steps=6 format=3 uid="uid://d2n3buyym3jqj"]
+
+[ext_resource type="Script" uid="uid://b3wt515ikx5de" path="res://script/victory.gd" id="1_8hrio"]
+[ext_resource type="PackedScene" uid="uid://by160yhbb0qpo" path="res://scene/menu_button.tscn" id="2_qf7ln"]
+[ext_resource type="AudioStream" uid="uid://bupo067nx6673" path="res://sounds/victory.mp3" id="3_qf7ln"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_ihqoo"]
+bg_color = Color(0.352941, 0.360784, 0.4, 1)
+
+[sub_resource type="Theme" id="Theme_fa3o4"]
+default_font_size = 90
+
+[node name="Victory" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_8hrio")
+
+[node name="Panel" type="Panel" parent="."]
+layout_mode = 0
+offset_right = 1920.0
+offset_bottom = 1080.0
+theme_override_styles/panel = SubResource("StyleBoxFlat_ihqoo")
+
+[node name="Title" type="Label" parent="Panel"]
+layout_mode = 0
+offset_left = 837.0
+offset_top = 200.0
+offset_right = 1167.0
+offset_bottom = 324.0
+theme = SubResource("Theme_fa3o4")
+text = "Victory!"
+
+[node name="MainMenuButton" parent="Panel" instance=ExtResource("2_qf7ln")]
+layout_mode = 0
+offset_left = 539.0
+offset_top = 610.0
+offset_right = 654.0
+offset_bottom = 712.0
+
+[node name="Label" type="Label" parent="Panel/MainMenuButton"]
+layout_mode = 0
+offset_right = 118.0
+offset_bottom = 116.0
+theme_override_font_sizes/font_size = 32
+text = "Main
+menu"
+horizontal_alignment = 1
+
+[node name="QuitButton" parent="Panel" instance=ExtResource("2_qf7ln")]
+layout_mode = 0
+offset_left = 1369.0
+offset_top = 637.0
+offset_right = 1448.0
+offset_bottom = 697.0
+
+[node name="Label" type="Label" parent="Panel/QuitButton"]
+layout_mode = 0
+offset_right = 67.0
+offset_bottom = 45.0
+theme_override_font_sizes/font_size = 32
+text = "Quit"
+
+[node name="VictorySound" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource("3_qf7ln")
+bus = &"Victory"
+
+[node name="VictoryTitleTimer" type="Timer" parent="."]
+wait_time = 0.5
+autostart = true
+
+[connection signal="pressed" from="Panel/MainMenuButton" to="." method="_on_main_menu_button_pressed"]
+[connection signal="pressed" from="Panel/QuitButton" to="." method="_on_quit_button_pressed"]
+[connection signal="timeout" from="VictoryTitleTimer" to="." method="_on_victory_title_timer_timeout"]
