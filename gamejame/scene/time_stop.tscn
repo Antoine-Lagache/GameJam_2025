@@ -101,8 +101,10 @@ libraries = {
 
 [node name="Power_activation" type="AudioStreamPlayer2D" parent="."]
 stream = ExtResource("3_pnf1x")
+bus = &"Power_activation"
 
 [node name="Power_apparition" type="AudioStreamPlayer2D" parent="."]
 stream = ExtResource("4_l7kak")
+bus = &"Power_apparition"
 
 [connection signal="body_entered" from="Area2D" to="." method="_on_area_2d_body_entered"]
