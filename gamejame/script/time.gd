@@ -29,7 +29,6 @@ func spawn_time_stop():
 		var spawn_pos = Vector2(randf_range(0,screen.x), randf_range(0,screen.y))
 		if min(spawn_pos.distance_to(retro_position),spawn_pos.distance_to(mechant.position))>dist_min:
 			var new_time_stop = time_stop.instantiate()
-			retro_position = spawn_pos
 			new_time_stop.position = spawn_pos
 			add_child(new_time_stop)
 			break
@@ -37,6 +36,7 @@ func spawn_time_stop():
 func start_timer():
 	$Timer.start()
 	shader_material.set_shader_parameter("invert", true)
+	retro_position = player.position
 	player_shade.position = retro_position
 	player_shade.visible = true
 	$Timer_bar.visible = true
@@ -47,6 +47,7 @@ func _on_timer_timeout() -> void:
 	shader_material.set_shader_parameter("invert", false)
 	player_shade.visible = false
 	player.position = retro_position
+	player.i_frames = 30
 	spawn_time_stop()
 	
 func on_mechant_hit():
@@ -56,5 +57,6 @@ func on_mechant_hit():
 	$Timer.stop()
 	shader_material.set_shader_parameter("invert", false)
 	player.position = retro_position
+	player.i_frames = 30
 	spawn_time_stop()
 	

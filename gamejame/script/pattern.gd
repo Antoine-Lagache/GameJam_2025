@@ -25,7 +25,7 @@ func start_pattern(id:int) -> void:
 		4:
 			pattern_4()
 		5:
-			pass
+			pattern_5()
 		6:
 			pass
 		7:
@@ -93,7 +93,7 @@ func pattern_4(): # weird azzayu's teleport idea
 		if len(get_tree().get_nodes_in_group("bullet")) < bullet_limit and Global.time_speed:
 			var color = Color(randf_range(0,1),randf_range(0,1),randf_range(0,1))
 			var new_bullet:Node = bullet.instantiate()
-			new_bullet.speed = 600
+			new_bullet.speed = 400
 			new_bullet.color = color
 			new_bullet.direction = randf_range(0.0,2*PI)
 			var bro:Node = bullet.instantiate()
@@ -107,3 +107,16 @@ func pattern_4(): # weird azzayu's teleport idea
 			add_child(new_bullet)
 			add_child(bro)
 		await get_tree().create_timer(0.2).timeout
+		
+func pattern_5():
+	await get_tree().create_timer(0.5).timeout # On evite le spawn kill au chgt de pattern
+	var angle = randf_range(0, 2 * PI)
+	while(pattern_id == 5):
+		if len(get_tree().get_nodes_in_group("bullet")) < bullet_limit and Global.time_speed:
+			for i in range(6):
+				var new_bullet:Node = bullet.instantiate()
+				new_bullet.speed = 800
+				new_bullet.direction = angle + i*2*PI/6
+				add_child(new_bullet)
+			angle += 0.05
+		await get_tree().create_timer(0.1).timeout # on veut faire un tour en une seconde
