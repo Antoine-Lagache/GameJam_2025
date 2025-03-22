@@ -4,6 +4,7 @@ extends Node2D
 @onready var power_apparition: AudioStreamPlayer2D = $Power_apparition
 
 var slow_time = false
+var slowing = true # sorry
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
@@ -13,11 +14,12 @@ func _ready() -> void:
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta: float) -> void:
-	if slow_time and Global.time_speed>0:
-		Global.time_speed += -delta/0.3
+	if slow_time and Global.time_speed>0 and slowing:
+		Global.time_speed += -delta/0.5
 	elif slow_time:
 		slow_time = false
 		Global.time_speed = 0.
+	
 
 func _on_area_2d_body_entered(body: Node2D) -> void:
 	if body.is_in_group("player"):

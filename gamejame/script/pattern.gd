@@ -31,7 +31,7 @@ func start_pattern(id:int) -> void:
 		6:
 			pattern_6()
 		7:
-			pass
+			pattern_7()
 		8:
 			pass
 		9:
@@ -128,10 +128,27 @@ func pattern_5():
 func pattern_6(): # big bullet that makes bullets
 	await get_tree().create_timer(0.5).timeout # On evite le spawn kill au chgt de pattern
 	while(pattern_id == 6):
-		for i in range(5):
-			var new_bullet:Node = big_bullet.instantiate()
-			new_bullet.speed = 150
-			new_bullet.direction =  2 * PI / 5 * i
-			new_bullet.angular_velocity = 0.01
-			add_child(new_bullet)
+		if len(get_tree().get_nodes_in_group("bullet")) < bullet_limit and Global.time_speed:
+			for i in range(5):
+				var new_bullet:Node = big_bullet.instantiate()
+				new_bullet.speed = 150
+				new_bullet.direction =  2 * PI / 5 * i
+				new_bullet.angular_velocity = 0.01
+				add_child(new_bullet)
 		await get_tree().create_timer(2.0).timeout
+		
+
+func pattern_7():
+	await get_tree().create_timer(0.5).timeout # On evite le spawn kill au chgt de pattern
+	while(pattern_id == 7):
+		if len(get_tree().get_nodes_in_group("bullet")) < bullet_limit and Global.time_speed:
+			var circle_size = 15
+			var angle = randf_range(0,2*PI)
+			var pos = Vector2(randf_range(-50,50),randf_range(-50,50))
+			for i in range(15):
+				var new_bullet:Node = bullet.instantiate()
+				new_bullet.speed = 400
+				new_bullet.direction = angle + i*2*PI/circle_size
+				new_bullet.position += pos
+				add_child(new_bullet)
+		await get_tree().create_timer(0.5).timeout

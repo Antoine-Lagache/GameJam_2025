@@ -2,7 +2,7 @@
 
 [ext_resource type="Texture2D" uid="uid://dvgjro8yi6tjy" path="res://sprites/mechant.png" id="1_to7ja"]
 [ext_resource type="Script" uid="uid://db1rl4it33xcl" path="res://script/mechant.gd" id="2_7bvp0"]
-[ext_resource type="Shader" uid="uid://ceey1m6tme506" path="res://scene/flash.gdshader" id="2_xstp7"]
+[ext_resource type="Shader" path="res://scene/flash.gdshader" id="2_xstp7"]
 [ext_resource type="PackedScene" uid="uid://lmckkoynou7k" path="res://scene/health_bar.tscn" id="3_ths1h"]
 [ext_resource type="AudioStream" uid="uid://bxl37x5uickp8" path="res://sounds/boss_hit.mp3" id="4_uycmm"]
 

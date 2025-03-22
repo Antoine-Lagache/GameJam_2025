@@ -27,8 +27,10 @@ func _physics_process(_delta: float) -> void:
 
 func spawn_time_stop():
 	while true:
-		var spawn_pos = Vector2(randf_range(0,screen.x), randf_range(0,screen.y))
+		var spawn_pos = Vector2(randf_range(50,screen.x-50), randf_range(50,screen.y-50))
 		if min(spawn_pos.distance_to(retro_position),spawn_pos.distance_to(mechant.position))>dist_min:
+			for stop in get_tree().get_nodes_in_group("time_stop"):
+				stop.queue_free()
 			var new_time_stop = time_stop.instantiate()
 			new_time_stop.position = spawn_pos
 			call_deferred("add_child", new_time_stop)
@@ -49,8 +51,7 @@ func _on_timer_timeout() -> void:
 	player_shade.visible = false
 	player.position = retro_position
 	player.i_frames = 30
-	if (len(get_tree().get_nodes_in_group("time_stop"))) == 0:
-		spawn_time_stop()
+	spawn_time_stop()
 	
 func on_mechant_hit():
 	Global.time_speed = 1.0
@@ -60,6 +61,5 @@ func on_mechant_hit():
 	shader_material.set_shader_parameter("invert", false)
 	player.position = retro_position
 	player.i_frames = 30
-	if (len(get_tree().get_nodes_in_group("time_stop"))) == 0:
-		spawn_time_stop()
+	spawn_time_stop()
 	

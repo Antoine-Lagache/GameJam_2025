@@ -5,7 +5,7 @@ signal mechant_hit
 var pattern_path = load("res://scene/pattern.tscn")
 var bullet_limit:int = 100
 var pattern = pattern_path.instantiate()
-var max_pattern = 6
+var max_pattern = 7
 @onready var boss_hit_sound: AudioStreamPlayer2D = $BossHitSound
 var number_of_flash: int
 
@@ -14,7 +14,7 @@ func _ready():
 	var screen = DisplayServer.window_get_size()
 	position = Vector2(screen.x/2, screen.y/2)
 	print(position)
-	pattern.pattern_id=4
+	pattern.pattern_id=max_pattern
 	add_child(pattern)
 	$CanvasLayer/Health_bar.max_health = 5
 	$CanvasLayer/Health_bar.position = Vector2(screen.x - $CanvasLayer/Health_bar/red.size.x,0)
