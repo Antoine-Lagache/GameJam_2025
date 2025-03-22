@@ -31,7 +31,7 @@ func start_pattern(id:int) -> void:
 		6:
 			pattern_6()
 		7:
-			pass
+			pattern_7()
 		8:
 			pass
 		9:

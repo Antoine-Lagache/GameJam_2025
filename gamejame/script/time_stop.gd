@@ -15,7 +15,7 @@ func _ready() -> void:
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta: float) -> void:
 	if slow_time and Global.time_speed>0 and slowing:
-		Global.time_speed += -delta/0.3
+		Global.time_speed += -delta/0.5
 	elif slow_time:
 		slow_time = false
 		Global.time_speed = 0.
