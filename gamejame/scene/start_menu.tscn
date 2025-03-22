@@ -30,6 +30,7 @@ offset_bottom = 338.0
 scale = Vector2(2, 2)
 
 [node name="Label" type="Label" parent="Panel/GameButton"]
+layout_mode = 0
 offset_left = 19.0
 offset_top = 25.0
 offset_right = 81.0
@@ -63,6 +64,7 @@ offset_bottom = 700.0
 scale = Vector2(2, 2)
 
 [node name="Label" type="Label" parent="Panel/CreditsButton"]
+layout_mode = 0
 offset_left = 19.0
 offset_top = 37.0
 offset_right = 81.0
