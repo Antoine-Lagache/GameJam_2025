@@ -51,6 +51,7 @@ func _on_timer_timeout() -> void:
 	player_shade.visible = false
 	player.position = retro_position
 	player.i_frames = 30
+	player.flash_start()
 	spawn_time_stop()
 	
 func on_mechant_hit():
@@ -61,5 +62,6 @@ func on_mechant_hit():
 	shader_material.set_shader_parameter("invert", false)
 	player.position = retro_position
 	player.i_frames = 30
+	player.flash_start()
 	spawn_time_stop()
 	
