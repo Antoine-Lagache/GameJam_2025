@@ -1,6 +1,5 @@
 extends Control
-@onready var main_menu_button: TextureButton = $Panel/MainMenuButton
-@onready var quit_button: TextureButton = $Panel/QuitButton
+
 @onready var victory_sound: AudioStreamPlayer2D = $VictorySound
 @onready var title: Label = $Panel/Title
 
