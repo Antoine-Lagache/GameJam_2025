@@ -9,6 +9,7 @@ func _ready():
 	var bbeg:Node = mechant.instantiate()
 	var hero:Node = player.instantiate()
 	var temps:Node = time.instantiate()
+	hero.mechant = bbeg
 	add_child(bbeg)
 	add_child(hero)
 	add_child(temps)
