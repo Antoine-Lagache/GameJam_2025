@@ -49,7 +49,8 @@ func _on_timer_timeout() -> void:
 	player_shade.visible = false
 	player.position = retro_position
 	player.i_frames = 30
-	spawn_time_stop()
+	if (len(get_tree().get_nodes_in_group("time_stop"))) == 0:
+		spawn_time_stop()
 	
 func on_mechant_hit():
 	Global.time_speed = 1.0
@@ -59,5 +60,6 @@ func on_mechant_hit():
 	shader_material.set_shader_parameter("invert", false)
 	player.position = retro_position
 	player.i_frames = 30
-	spawn_time_stop()
+	if (len(get_tree().get_nodes_in_group("time_stop"))) == 0:
+		spawn_time_stop()
 	

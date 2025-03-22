@@ -72,8 +72,8 @@ func pattern_2():
 				new_bullet.speed = 100
 				new_bullet.direction = angle + i*2*PI/3
 				add_child(new_bullet)
-			angle += 1/(4*PI)
-		await get_tree().create_timer(1/(4*PI)).timeout # on veut faire un tour en une seconde
+			angle += 1/(3*PI)
+		await get_tree().create_timer(1/(3*PI)).timeout # on veut faire un tour en une seconde
 			
 			
 			
