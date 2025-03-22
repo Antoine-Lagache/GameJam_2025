@@ -4,7 +4,7 @@ extends Node2D
 @onready var power_apparition: AudioStreamPlayer2D = $Power_apparition
 
 var slow_time = false
-var slowing = false # sorry
+var slowing = true # sorry
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
