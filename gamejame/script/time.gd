@@ -4,7 +4,7 @@ var time_stop = load("res://scene/time_stop.tscn")
 var player:Node
 var mechant:Node
 var screen = DisplayServer.window_get_size()
-var dist_min = 150
+var dist_min = 250
 var retro_position = Vector2(100,100)
 @onready var player_shade:Sprite2D = $"./Sprite2D"
 @onready var shader_material = $Inversion_shader.material
@@ -49,7 +49,7 @@ func _on_timer_timeout() -> void:
 	$Timer_bar.visible = false
 	shader_material.set_shader_parameter("invert", false)
 	player_shade.visible = false
-	player.position = retro_position
+	# player.position = retro_position
 	player.i_frames = 30
 	player.flash_start()
 	spawn_time_stop()
