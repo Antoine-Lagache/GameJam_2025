@@ -6,6 +6,9 @@ var pattern_id:int = 1
 
 @onready var big_bullet = load("res://scene/big_bullet.tscn")
 
+var player:Node
+var mechant:Node
+
 
 func _ready():
 	start_pattern(pattern_id)
@@ -33,7 +36,7 @@ func start_pattern(id:int) -> void:
 		7:
 			pattern_7()
 		8:
-			pass
+			pattern_8()
 		9:
 			pass
 		10:
@@ -138,7 +141,7 @@ func pattern_6(): # big bullet that makes bullets
 		await get_tree().create_timer(2.0).timeout
 		
 
-func pattern_7():
+func pattern_7(): # circles
 	await get_tree().create_timer(0.5).timeout # On evite le spawn kill au chgt de pattern
 	while(pattern_id == 7):
 		if len(get_tree().get_nodes_in_group("bullet")) < bullet_limit and Global.time_speed:
@@ -152,3 +155,18 @@ func pattern_7():
 				new_bullet.position += pos
 				add_child(new_bullet)
 		await get_tree().create_timer(0.5).timeout
+		
+func pattern_8(): # bam
+	await get_tree().create_timer(0.5).timeout # On evite le spawn kill au chgt de pattern
+	player =  get_tree().get_nodes_in_group("player")[0]
+	mechant =  get_tree().get_nodes_in_group("mechant")[0]
+	while(pattern_id == 8):
+		if len(get_tree().get_nodes_in_group("bullet")) < bullet_limit and Global.time_speed:
+			var baam_size = 50
+			var angle = mechant.position.angle_to_point(player.position)
+			for i in range(baam_size):
+				var new_bullet:Node = bullet.instantiate()
+				new_bullet.speed = 400+randi_range(0,300)
+				new_bullet.direction = angle + randf_range(-PI/10,PI/10)
+				add_child(new_bullet)
+		await get_tree().create_timer(1).timeout
