@@ -1,4 +1,4 @@
-[gd_resource type="AudioBusLayout" load_steps=0 format=3 uid="uid://cnibl1ukqvrwx"]
+[gd_resource type="AudioBusLayout" format=3 uid="uid://cnibl1ukqvrwx"]
 
 [resource]
 bus/0/volume_db = 0.0694828
@@ -20,3 +20,9 @@ bus/3/mute = false
 bus/3/bypass_fx = false
 bus/3/volume_db = 0.267241
 bus/3/send = &"Power_activation"
+bus/4/name = &"HoverSound"
+bus/4/solo = false
+bus/4/mute = false
+bus/4/bypass_fx = false
+bus/4/volume_db = 5.02676
+bus/4/send = &"Master"
