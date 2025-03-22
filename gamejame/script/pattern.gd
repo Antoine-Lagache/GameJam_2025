@@ -46,9 +46,9 @@ func start_pattern(id:int) -> void:
 		12:
 			pattern_12()
 		13:
-			pass
+			pattern_13()
 		14:
-			pass
+			pattern_14()
 		15:
 			pass
 		16:
@@ -61,6 +61,8 @@ func start_pattern(id:int) -> void:
 			pass
 		20:
 			pass
+		999:
+			pattern_999()
 		_:
 			print("idk what happened, but you are trying to use a non existent pattern")
 			
@@ -110,7 +112,7 @@ func pattern_3(): # slow homing
 			new_bullet.color = Color("cyan")
 			new_bullet.homing = true
 			add_child(new_bullet)
-		await get_tree().create_timer(1.0).timeout # on veut faire un tour en une seconde
+		await get_tree().create_timer(0.2).timeout # on veut faire un tour en une seconde
 			
 			
 			
@@ -255,3 +257,70 @@ func pattern_12(): # Time stop? dont care
 				add_child(new_bullet)
 			angle += PI/circle_size
 		await get_tree().create_timer(0.5).timeout
+		
+func pattern_13(): # reversed spinning???
+	await get_tree().create_timer(0.5).timeout # On evite le spawn kill au chgt de pattern
+	var angle = randf_range(0,2*PI)
+	var r = 10
+	while(pattern_id == 13):
+		if len(get_tree().get_nodes_in_group("bullet")) < bullet_limit and Global.time_speed:
+			var circle_size = 3
+			for i in range(circle_size):
+				var new_bullet:Node = bullet.instantiate()
+				new_bullet.speed = 300
+				new_bullet.color = Color("violet")
+				var dis_angle = angle + i*2*PI/circle_size
+				new_bullet.position += r*Vector2.from_angle(dis_angle)
+				new_bullet.direction = dis_angle + PI
+				add_child(new_bullet)
+			angle += 0.2
+			r += 5
+		await get_tree().create_timer(0.05).timeout
+		
+func pattern_14(): # grand gignol zano kaichi
+	await get_tree().create_timer(0.5).timeout # On evite le spawn kill au chgt de pattern
+	player =  get_tree().get_nodes_in_group("player")[0]
+	var angle1 = randf_range(0,2*PI)
+	var angle2 = randf_range(0,2*PI)
+	while(pattern_id == 14):
+		if len(get_tree().get_nodes_in_group("bullet")) < bullet_limit:
+			var circle_size = 2
+			for i in range(circle_size):
+				for j in range(3):
+					var new_bullet:Node = bullet.instantiate()
+					new_bullet.speed = 500
+					new_bullet.color = Color("violet")
+					add_child(new_bullet)
+					new_bullet.position += 100*Vector2.from_angle(angle1 + i*PI*2/circle_size)
+					new_bullet.direction = new_bullet.global_position.angle_to_point(player.position) - PI/10 + j*PI/10
+					
+				for j in range(3):
+					var new_bullet:Node = bullet.instantiate()
+					new_bullet.speed = 500
+					new_bullet.color = Color("red")
+					add_child(new_bullet)
+					new_bullet.global_position += 100*Vector2.from_angle(angle2 + i*PI*2/circle_size)
+					new_bullet.direction = new_bullet.global_position.angle_to_point(player.position) - PI/10 + j*PI/10
+					
+			angle1 += 0.02
+			angle2 -= 0.02
+		await get_tree().create_timer(0.15).timeout
+		
+func pattern_999(): # n'activez jamais ça
+	await get_tree().create_timer(0.5).timeout # On evite le spawn kill au chgt de pattern
+	var angle = randf_range(0,2*PI)
+	var t = 0
+	while true:
+		pattern_id = 999
+		if len(get_tree().get_nodes_in_group("bullet")) < bullet_limit or true: # ptdr
+			var circle_size = 7
+			for i in range(circle_size):
+				var new_bullet:Node = bullet.instantiate()
+				new_bullet.speed = 600
+				new_bullet.color = Color("black")
+				new_bullet.is_time_immune = 1.
+				add_child(new_bullet)
+				new_bullet.direction = angle + 2*i*PI/circle_size
+			angle += sin(t*PI/(360*2))
+			t += 1
+		await get_tree().create_timer(0.01).timeout

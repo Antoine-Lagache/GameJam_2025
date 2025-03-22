@@ -5,7 +5,7 @@ signal mechant_hit
 var pattern_path = load("res://scene/pattern.tscn")
 var bullet_limit:int = 100
 var pattern = pattern_path.instantiate()
-var max_pattern = 12
+var max_pattern = 14
 @onready var boss_hit_sound: AudioStreamPlayer2D = $BossHitSound
 var number_of_flash: int
 
@@ -36,10 +36,13 @@ func _on_area_2d_body_entered(body: Node2D) -> void:
 		body.loose_pv()
 	elif body.is_in_group("player") and Global.time_speed ==0.:
 		$CanvasLayer/Health_bar.health += -1
-		boss_hit_sound.play()
-		flash_start()
+		if ($CanvasLayer/Health_bar.health == 0):
+			get_tree().change_scene_to_file("res://scene/victory.tscn")
+		else:
+			boss_hit_sound.play()
+			flash_start()
 		
-		emit_signal("mechant_hit")
+			emit_signal("mechant_hit")
 
 func flash_start():
 	number_of_flash = 3

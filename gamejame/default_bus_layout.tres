@@ -1,12 +1,12 @@
 [gd_resource type="AudioBusLayout" format=3 uid="uid://cnibl1ukqvrwx"]
 
 [resource]
-bus/0/volume_db = 0.0694828
+bus/0/volume_db = 2.05151
 bus/1/name = &"Power_activation"
 bus/1/solo = false
 bus/1/mute = false
 bus/1/bypass_fx = false
-bus/1/volume_db = -11.952
+bus/1/volume_db = -9.2092
 bus/1/send = &"Master"
 bus/2/name = &"Hero_hit"
 bus/2/solo = false
@@ -18,13 +18,13 @@ bus/3/name = &"Power_apparition"
 bus/3/solo = false
 bus/3/mute = false
 bus/3/bypass_fx = false
-bus/3/volume_db = 0.267241
-bus/3/send = &"Power_activation"
+bus/3/volume_db = 3.04474
+bus/3/send = &"Master"
 bus/4/name = &"Hover_sound"
 bus/4/solo = false
 bus/4/mute = false
 bus/4/bypass_fx = false
-bus/4/volume_db = 5.02676
+bus/4/volume_db = 6.02
 bus/4/send = &"Master"
 bus/5/name = &"Boss_hit"
 bus/5/solo = false
@@ -42,5 +42,11 @@ bus/7/name = &"Background_music"
 bus/7/solo = false
 bus/7/mute = false
 bus/7/bypass_fx = false
-bus/7/volume_db = -24.137
+bus/7/volume_db = -17.6645
 bus/7/send = &"Master"
+bus/8/name = &"Victory"
+bus/8/solo = false
+bus/8/mute = false
+bus/8/bypass_fx = false
+bus/8/volume_db = -15.1981
+bus/8/send = &"Master"
