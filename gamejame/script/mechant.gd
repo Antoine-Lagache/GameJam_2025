@@ -7,6 +7,7 @@ var bullet_limit:int = 100
 var pattern = pattern_path.instantiate()
 var max_pattern = 6
 @onready var boss_hit_sound: AudioStreamPlayer2D = $BossHitSound
+var number_of_flash: int
 
 func _ready():
 	add_to_group("mechant")
@@ -36,4 +37,19 @@ func _on_area_2d_body_entered(body: Node2D) -> void:
 	elif body.is_in_group("player") and Global.time_speed ==0.:
 		$CanvasLayer/Health_bar.health += -1
 		boss_hit_sound.play()
+		flash_start()
+		
 		emit_signal("mechant_hit")
+
+func flash_start():
+	number_of_flash = 3
+	for i in range(number_of_flash):
+		$Flash_Timer.start(0.1)
+		$Sprite2D.material.set_shader_parameter("flash_modifier", 0.6)
+		await $Flash_Timer.timeout
+		$Sprite2D.material.set_shader_parameter("flash_modifier", 0.0)
+		$Flash_Timer.start(0.15)
+		await $Flash_Timer.timeout
+	
+
+	

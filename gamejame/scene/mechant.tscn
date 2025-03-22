@@ -1,9 +1,15 @@
-[gd_scene load_steps=6 format=3 uid="uid://bixsisomkggkx"]
+[gd_scene load_steps=8 format=3 uid="uid://bixsisomkggkx"]
 
 [ext_resource type="Texture2D" uid="uid://dvgjro8yi6tjy" path="res://sprites/mechant.png" id="1_to7ja"]
 [ext_resource type="Script" uid="uid://db1rl4it33xcl" path="res://script/mechant.gd" id="2_7bvp0"]
+[ext_resource type="Shader" uid="uid://ceey1m6tme506" path="res://scene/flash.gdshader" id="2_xstp7"]
 [ext_resource type="PackedScene" uid="uid://lmckkoynou7k" path="res://scene/health_bar.tscn" id="3_ths1h"]
 [ext_resource type="AudioStream" uid="uid://bxl37x5uickp8" path="res://sounds/boss_hit.mp3" id="4_uycmm"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_7a3mb"]
+shader = ExtResource("2_xstp7")
+shader_parameter/flash_color = Vector4(1, 1, 1, 1)
+shader_parameter/flash_modifier = 0.0
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_7bvp0"]
 radius = 48.0416
@@ -12,6 +18,7 @@ radius = 48.0416
 script = ExtResource("2_7bvp0")
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
+material = SubResource("ShaderMaterial_7a3mb")
 scale = Vector2(0.6, 0.6)
 texture = ExtResource("1_to7ja")
 
@@ -36,6 +43,10 @@ health = 5
 
 [node name="BossHitSound" type="AudioStreamPlayer2D" parent="."]
 stream = ExtResource("4_uycmm")
+
+[node name="Flash_Timer" type="Timer" parent="."]
+wait_time = 0.5
+one_shot = true
 
 [connection signal="body_entered" from="Area2D" to="." method="_on_area_2d_body_entered"]
 [connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]
