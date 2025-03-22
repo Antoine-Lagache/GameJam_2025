@@ -1,6 +1,6 @@
 [gd_scene load_steps=3 format=3 uid="uid://by160yhbb0qpo"]
 
-[ext_resource type="Script" uid="uid://dbbuxhjbyns0w" path="res://script/menu_button.gd" id="4_8d1xv"]
+[ext_resource type="Script" path="res://script/menu_button.gd" id="4_8d1xv"]
 [ext_resource type="AudioStream" uid="uid://hu6ksnfcfxcu" path="res://sounds/menu_button.mp3" id="5_7ddbv"]
 
 [node name="MenuButton" type="TextureButton"]
@@ -10,6 +10,5 @@ script = ExtResource("4_8d1xv")
 
 [node name="hoverSound" type="AudioStreamPlayer2D" parent="."]
 stream = ExtResource("5_7ddbv")
-bus = &"Hover_sound"
 
 [connection signal="mouse_entered" from="." to="." method="_on_mouse_entered"]

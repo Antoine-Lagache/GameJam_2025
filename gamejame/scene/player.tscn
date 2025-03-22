@@ -1,24 +1,32 @@
-[gd_scene load_steps=6 format=3 uid="uid://ceov563nujslq"]
+[gd_scene load_steps=8 format=3 uid="uid://ceov563nujslq"]
 
 [ext_resource type="Script" uid="uid://bsa4bkgiml488" path="res://script/player.gd" id="1_xo3ru"]
 [ext_resource type="Texture2D" uid="uid://doae567ean0r2" path="res://sprites/player.png" id="2_hjaqi"]
+[ext_resource type="Shader" uid="uid://b6gw67ia7wavn" path="res://scene/player.gdshader" id="2_s4jxa"]
 [ext_resource type="PackedScene" uid="uid://lmckkoynou7k" path="res://scene/health_bar.tscn" id="3_fvtld"]
 [ext_resource type="AudioStream" uid="uid://bdkgtfjulpvtn" path="res://sounds/hero_hit.mp3" id="4_ct4mp"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_fvtld"]
 radius = 38.0
 
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_oh5ij"]
+resource_local_to_scene = true
+shader = ExtResource("2_s4jxa")
+shader_parameter/flash_color = Vector4(1, 1, 1, 1)
+shader_parameter/flash_modifier = 0.0
+
 [node name="Player" type="CharacterBody2D"]
 script = ExtResource("1_xo3ru")
-
-[node name="Sprite2D" type="Sprite2D" parent="."]
-position = Vector2(0.499992, 1.5)
-scale = Vector2(1.54, 1.54)
-texture = ExtResource("2_hjaqi")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 position = Vector2(-0.5, 0.5)
 shape = SubResource("CircleShape2D_fvtld")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+material = SubResource("ShaderMaterial_oh5ij")
+position = Vector2(0.499992, 1.5)
+scale = Vector2(1.54, 1.54)
+texture = ExtResource("2_hjaqi")
 
 [node name="CanvasLayer" type="CanvasLayer" parent="."]
 
@@ -27,3 +35,9 @@ shape = SubResource("CircleShape2D_fvtld")
 [node name="HeroHit" type="AudioStreamPlayer" parent="."]
 stream = ExtResource("4_ct4mp")
 bus = &"Hero_hit"
+
+[node name="Flash_Timer" type="Timer" parent="."]
+wait_time = 0.1
+one_shot = true
+
+[connection signal="timeout" from="Flash_Timer" to="." method="_on_flash_timer_timeout"]

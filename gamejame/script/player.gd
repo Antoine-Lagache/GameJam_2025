@@ -14,6 +14,8 @@ var direction: Vector2
 func loose_pv():
 	if i_frames <= 0:
 		hero_hit.play()
+		$Sprite2D.material.set_shader_parameter("flash_modifier", 0.7)
+		$Flash_Timer.start()
 		$CanvasLayer/Health_bar.health += -1
 		if $CanvasLayer/Health_bar.health == 0:
 			get_tree().change_scene_to_file("res://scene/gameover.tscn")
@@ -40,7 +42,7 @@ func _physics_process(_delta: float) -> void:
 		position.y = screen_size.y-size_player.y
 		velocity.y = -abs(-velocity.y)
 	
-	if Input.is_key_pressed(KEY_SHIFT):
+	elif Input.is_key_pressed(KEY_SHIFT):
 		velocity = direction*SPEED/2
 	else:
 		velocity = direction*SPEED
@@ -49,3 +51,7 @@ func _physics_process(_delta: float) -> void:
 		i_frames -= 1
 	
 	move_and_slide()
+
+
+func _on_flash_timer_timeout() -> void:
+	$Sprite2D.material.set_shader_parameter("flash_modifier", 0.0)
