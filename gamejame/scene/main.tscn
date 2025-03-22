@@ -2,7 +2,7 @@
 
 [ext_resource type="Script" uid="uid://cqg1r3kfnxil0" path="res://script/main.gd" id="1_itxqv"]
 [ext_resource type="AudioStream" uid="uid://h8g48qmjmjh7" path="res://sounds/background_music.mp3" id="2_v0l8b"]
-[ext_resource type="Shader" uid="uid://1hcfyg37upp0" path="res://scene/noise.gdshader" id="3_wp4xf"]
+[ext_resource type="Shader" uid="uid://1hcfyg37upp0" path="res://shader/noise.gdshader" id="3_wp4xf"]
 [ext_resource type="Script" uid="uid://b57x66uh3oxp5" path="res://scene/back_ground.gd" id="4_brvut"]
 
 [sub_resource type="FastNoiseLite" id="FastNoiseLite_brvut"]
