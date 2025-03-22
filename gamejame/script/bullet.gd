@@ -8,6 +8,7 @@ var homing = false
 var screen = DisplayServer.window_get_size()
 var is_dual = false
 var dual
+var is_time_immune = 0.
 
 var color = Color("Red")
 @onready var sprite:Sprite2D = $"./Sprite2D"
@@ -19,9 +20,9 @@ func _ready():
 	add_to_group("bullet")
 	
 func _physics_process(delta: float) -> void:
-	if Global.time_speed:
+	if Global.time_speed or is_time_immune:
 		var direction_vector = Vector2(cos(direction),sin(direction))
-		global_position += speed*direction_vector*delta*Global.time_speed
+		global_position += speed*direction_vector*delta*max(Global.time_speed,is_time_immune)
 		direction += angular_velocity
 		if homing:
 			direction = angle_to_player(player)
