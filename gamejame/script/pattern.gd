@@ -286,7 +286,7 @@ func pattern_14(): # grand gignol zano kaichi
 			for i in range(circle_size):
 				for j in range(3):
 					var new_bullet:Node = bullet.instantiate()
-					new_bullet.speed = 1000
+					new_bullet.speed = 500
 					new_bullet.color = Color("violet")
 					add_child(new_bullet)
 					new_bullet.position += 100*Vector2.from_angle(angle1 + i*PI*2/circle_size)
@@ -294,7 +294,7 @@ func pattern_14(): # grand gignol zano kaichi
 					
 				for j in range(3):
 					var new_bullet:Node = bullet.instantiate()
-					new_bullet.speed = 1000
+					new_bullet.speed = 500
 					new_bullet.color = Color("red")
 					add_child(new_bullet)
 					new_bullet.global_position += 100*Vector2.from_angle(angle2 + i*PI*2/circle_size)
@@ -302,4 +302,4 @@ func pattern_14(): # grand gignol zano kaichi
 					
 			angle1 += 0.02
 			angle2 -= 0.02
-		await get_tree().create_timer(0.05).timeout
+		await get_tree().create_timer(0.1).timeout
