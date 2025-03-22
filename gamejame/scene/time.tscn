@@ -1,6 +1,7 @@
-[gd_scene load_steps=4 format=3 uid="uid://dmi7sdx6ab5as"]
+[gd_scene load_steps=5 format=3 uid="uid://dmi7sdx6ab5as"]
 
 [ext_resource type="Script" uid="uid://b6vjsah7mp4dy" path="res://script/time.gd" id="1_yegv2"]
+[ext_resource type="Texture2D" uid="uid://doae567ean0r2" path="res://sprites/player.png" id="2_yegv2"]
 
 [sub_resource type="Shader" id="Shader_066fg"]
 code = "shader_type canvas_item;
@@ -73,5 +74,8 @@ text = "10/10"
 horizontal_alignment = 1
 vertical_alignment = 1
 metadata/_edit_use_anchors_ = true
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+texture = ExtResource("2_yegv2")
 
 [connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]
