@@ -17,6 +17,7 @@ func _ready() -> void:
 	$Inversion_shader.size = screen
 	$Timer_bar.visible = false
 	player_shade.self_modulate = Color(1,1,1,0.1)
+	$Inversion_shader.size = screen
 	spawn_time_stop()
 
 
@@ -30,7 +31,7 @@ func spawn_time_stop():
 		if min(spawn_pos.distance_to(retro_position),spawn_pos.distance_to(mechant.position))>dist_min:
 			var new_time_stop = time_stop.instantiate()
 			new_time_stop.position = spawn_pos
-			add_child(new_time_stop)
+			call_deferred("add_child", new_time_stop)
 			break
 
 func start_timer():

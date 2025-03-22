@@ -11,7 +11,7 @@ config_version=5
 [application]
 
 config/name="GameJame"
-run/main_scene="uid://xrnld6ll3m0h"
+run/main_scene="uid://bb6ccqh3e4sgp"
 config/features=PackedStringArray("4.4", "Forward Plus")
 config/icon="res://icon.svg"
 
@@ -23,6 +23,7 @@ Global="*res://script/global.gd"
 
 window/size/viewport_width=1920
 window/size/viewport_height=1080
+window/size/mode=3
 
 [input]
 

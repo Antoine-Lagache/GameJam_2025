@@ -7,6 +7,9 @@ const start_position = Vector2(300, 300)
 var screen_size = DisplayServer.window_get_size()
 const size_player = Vector2(10,10)
 var i_frames = 30
+var mechant:Node
+var direction: Vector2
+
 
 func loose_pv():
 	if i_frames <= 0:
@@ -20,8 +23,8 @@ func _ready() -> void:
 	scale = Vector2(0.7, 0.7)
 
 func _physics_process(_delta: float) -> void:
+	direction = Input.get_vector("left","right","up","down").normalized()
 	
-	var direction := Input.get_vector("left","right","up","down").normalized()
 	if position.x < size_player.x:
 		position.x = size_player.x
 		velocity.x = abs(velocity.x)
