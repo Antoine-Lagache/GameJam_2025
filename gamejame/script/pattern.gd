@@ -50,7 +50,7 @@ func start_pattern(id:int) -> void:
 		14:
 			pattern_14()
 		15:
-			pass
+			pattern_15()
 		16:
 			pass
 		17:
@@ -283,7 +283,7 @@ func pattern_14(): # grand gignol zano kaichi
 	var angle1 = randf_range(0,2*PI)
 	var angle2 = randf_range(0,2*PI)
 	while(pattern_id == 14):
-		if len(get_tree().get_nodes_in_group("bullet")) < bullet_limit:
+		if len(get_tree().get_nodes_in_group("bullet")) < bullet_limit and Global.time_speed:
 			var circle_size = 2
 			for i in range(circle_size):
 				for j in range(3):
@@ -305,6 +305,26 @@ func pattern_14(): # grand gignol zano kaichi
 			angle1 += 0.02
 			angle2 -= 0.02
 		await get_tree().create_timer(0.15).timeout
+		
+func pattern_15(): # you're not safe from me
+	await get_tree().create_timer(0.5).timeout # On evite le spawn kill au chgt de pattern
+	player =  get_tree().get_nodes_in_group("player")[0]
+	mechant =  get_tree().get_nodes_in_group("mechant")[0]
+	var angle = randf_range(0,2*PI)
+	while(pattern_id == 15):
+		if len(get_tree().get_nodes_in_group("bullet")) < bullet_limit and Global.time_speed:
+			var circle_size = 3
+			for i in range(circle_size):
+				var new_bullet:Node = bullet.instantiate()
+				new_bullet.speed = 200
+				new_bullet.color = Color("alice blue")
+				new_bullet.position = player.position + 500*Vector2.from_angle(angle + i*PI*2/circle_size) - mechant.position
+				new_bullet.direction = (new_bullet.position).angle_to_point(player.position - mechant.global_position)
+				add_child(new_bullet)
+			angle += 0.1
+		await get_tree().create_timer(0.05).timeout
+		
+		
 		
 func pattern_999(): # n'activez jamais ça
 	await get_tree().create_timer(0.5).timeout # On evite le spawn kill au chgt de pattern
