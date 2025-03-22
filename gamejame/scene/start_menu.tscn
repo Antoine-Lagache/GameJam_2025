@@ -80,6 +80,7 @@ offset_bottom = 700.0
 scale = Vector2(2, 2)
 
 [node name="Label" type="Label" parent="Panel/QuitButton"]
+layout_mode = 0
 offset_left = 32.0
 offset_top = 38.0
 offset_right = 69.0

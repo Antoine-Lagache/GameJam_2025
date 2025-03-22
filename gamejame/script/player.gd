@@ -6,13 +6,16 @@ const SPEED = 500.0
 const start_position = Vector2(300, 300)
 var screen_size = DisplayServer.window_get_size()
 const size_player = Vector2(10,10)
+var i_frames = 30
 var mechant:Node
 var direction: Vector2
 
 
 func loose_pv():
-	hero_hit.play()
-	$CanvasLayer/Health_bar.health += -1
+	if i_frames <= 0:
+		hero_hit.play()
+		$CanvasLayer/Health_bar.health += -1
+		i_frames = 30
 
 func _ready() -> void:
 	add_to_group("player")
@@ -39,4 +42,8 @@ func _physics_process(_delta: float) -> void:
 		velocity = direction*SPEED/2
 	else:
 		velocity = direction*SPEED
+		
+	if i_frames > 0:
+		i_frames -= 1
+	
 	move_and_slide()
