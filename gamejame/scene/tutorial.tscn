@@ -1,0 +1,95 @@
+[gd_scene load_steps=9 format=3 uid="uid://dpiiykgpnlv0v"]
+
+[ext_resource type="Script" uid="uid://b0rtifvjc2b06" path="res://script/tutorial.gd" id="1_mo30s"]
+[ext_resource type="Texture2D" uid="uid://doae567ean0r2" path="res://sprites/player.png" id="1_won01"]
+[ext_resource type="Texture2D" uid="uid://2ammtl2i7lng" path="res://sprites/black_arrow.png" id="2_mqdaa"]
+[ext_resource type="Texture2D" uid="uid://dvgjro8yi6tjy" path="res://sprites/mechant.png" id="3_mo30s"]
+[ext_resource type="Texture2D" uid="uid://cf2a4kh32yv8h" path="res://sprites/time_stop.png" id="4_6axd3"]
+[ext_resource type="Texture2D" uid="uid://b38pcyp0ma024" path="res://sprites/white_arrow.png" id="6_6axd3"]
+[ext_resource type="PackedScene" uid="uid://by160yhbb0qpo" path="res://scene/menu_button.tscn" id="6_whbp6"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_whbp6"]
+bg_color = Color(0.352941, 0.360784, 0.4, 1)
+
+[node name="Tutorial" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_mo30s")
+
+[node name="Panel" type="Panel" parent="."]
+layout_mode = 0
+offset_right = 1920.0
+offset_bottom = 1080.0
+theme_override_styles/panel = SubResource("StyleBoxFlat_whbp6")
+
+[node name="Player" type="Sprite2D" parent="Panel"]
+position = Vector2(330, 187)
+scale = Vector2(2, 2)
+texture = ExtResource("1_won01")
+
+[node name="ArrowPlayer" type="Sprite2D" parent="Panel/Player"]
+position = Vector2(65, -1)
+scale = Vector2(0.5, 0.5)
+texture = ExtResource("2_mqdaa")
+
+[node name="LabelPlayer" type="Label" parent="Panel/Player"]
+offset_left = 98.0
+offset_top = -13.0
+offset_right = 226.0
+offset_bottom = 20.0
+scale = Vector2(0.5, 0.5)
+theme_override_font_sizes/font_size = 32
+text = "Hero (you)"
+
+[node name="Mechant" type="Sprite2D" parent="Panel"]
+position = Vector2(1299, 198)
+texture = ExtResource("3_mo30s")
+
+[node name="ArrowMechant" type="Sprite2D" parent="Panel/Mechant"]
+position = Vector2(217, -4)
+texture = ExtResource("2_mqdaa")
+
+[node name="LabelMechant" type="Label" parent="Panel/Mechant"]
+offset_left = 300.0
+offset_top = -25.0
+offset_right = 462.0
+offset_bottom = 27.0
+theme_override_font_sizes/font_size = 32
+text = "Bad guy"
+
+[node name="TimeStop" type="Sprite2D" parent="Panel"]
+position = Vector2(320, 480)
+texture = ExtResource("4_6axd3")
+
+[node name="ArrowTime" type="Sprite2D" parent="Panel/TimeStop"]
+position = Vector2(182, 2)
+texture = ExtResource("2_mqdaa")
+
+[node name="LabelTime" type="Label" parent="Panel/TimeStop"]
+offset_left = 238.0
+offset_top = -45.0
+offset_right = 602.0
+offset_bottom = 48.0
+theme_override_font_sizes/font_size = 32
+text = "Time stop power
+Pick it up then go hit the boss"
+
+[node name="GoBackButton" parent="Panel" instance=ExtResource("6_whbp6")]
+layout_mode = 0
+texture_normal = ExtResource("2_mqdaa")
+texture_hover = ExtResource("6_6axd3")
+
+[node name="LabelGoBack" type="Label" parent="Panel/GoBackButton"]
+layout_mode = 0
+offset_left = 101.0
+offset_top = 26.0
+offset_right = 225.0
+offset_bottom = 87.0
+theme_override_font_sizes/font_size = 32
+text = "Go back"
+
+[connection signal="pressed" from="Panel/GoBackButton" to="." method="_on_go_back_button_pressed"]
