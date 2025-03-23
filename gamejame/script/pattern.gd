@@ -54,9 +54,9 @@ func start_pattern(id:int) -> void:
 		16:
 			pattern_16()
 		17:
-			pass
+			pattern_17()
 		18:
-			pass
+			pattern_18()
 		19:
 			pass
 		20:
@@ -324,7 +324,7 @@ func pattern_15(): # you're not safe from me
 			angle += 0.1
 		await get_tree().create_timer(0.05).timeout
 		
-func pattern_16():
+func pattern_16(): # arrow
 	await get_tree().create_timer(0.5).timeout # On evite le spawn kill au chgt de pattern
 	player =  get_tree().get_nodes_in_group("player")[0]
 	mechant =  get_tree().get_nodes_in_group("mechant")[0]
@@ -341,6 +341,49 @@ func pattern_16():
 					new_bullet.direction = angle - 0.1*(i-circle_size/4) + 0.1*circle_size/4
 				add_child(new_bullet)
 		await get_tree().create_timer(0.5).timeout
+		
+func pattern_17(): # rain
+	await get_tree().create_timer(0.5).timeout # On evite le spawn kill au chgt de pattern
+	mechant =  get_tree().get_nodes_in_group("mechant")[0]
+	while(pattern_id == 17):
+		if len(get_tree().get_nodes_in_group("bullet")) < bullet_limit and Global.time_speed:
+			var drop_size = 3
+			var pos = Vector2(randf_range(0,DisplayServer.window_get_size().x),0) - mechant.position
+			var angle = PI/2 + randf_range(-0.2,0.2)
+			for i in range(drop_size):
+				var new_bullet:Node = bullet.instantiate()
+				new_bullet.speed = 400 + i*100
+				new_bullet.color = Color("dark blue")
+				new_bullet.position = pos
+				new_bullet.direction = angle
+				add_child(new_bullet)
+		await get_tree().create_timer(0.05).timeout
+		
+func pattern_18(): # reversed rain
+	await get_tree().create_timer(0.5).timeout # On evite le spawn kill au chgt de pattern
+	mechant =  get_tree().get_nodes_in_group("mechant")[0]
+	while(pattern_id == 18):
+		if len(get_tree().get_nodes_in_group("bullet")) < bullet_limit and Global.time_speed:
+			var drop_size = 3
+			var pos = Vector2(randf_range(0,DisplayServer.window_get_size().x),DisplayServer.window_get_size().y) - mechant.position
+			var angle = -PI/2 + randf_range(-0.2,0.2)
+			for i in range(drop_size):
+				var new_bullet:Node = bullet.instantiate()
+				new_bullet.speed = 400 + i*100
+				new_bullet.color = Color("cyan")
+				new_bullet.position = pos
+				new_bullet.direction = angle
+				add_child(new_bullet)
+		await get_tree().create_timer(0.05).timeout
+		
+		
+		
+		
+		
+		
+		
+		
+		
 		
 		
 		

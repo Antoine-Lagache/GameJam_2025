@@ -6,7 +6,7 @@ var pattern_path = load("res://scene/pattern.tscn")
 var bullet_limit:int = 100
 var pattern = pattern_path.instantiate()
 var pattern2 = pattern_path.instantiate()
-var max_pattern = 16
+var max_pattern = 18
 @onready var boss_hit_sound: AudioStreamPlayer2D = $BossHitSound
 var number_of_flash: int
 var hardcore = false # hell
@@ -16,9 +16,9 @@ func _ready():
 	add_to_group("mechant")
 	var screen = DisplayServer.window_get_size()
 	position = Vector2(screen.x/2, screen.y/2)
-	print(position)
-	# pattern.pattern_id=max_pattern # Test only
-	pattern.pattern_id=randi_range(1,max_pattern)
+	# print(position)
+	pattern.pattern_id=max_pattern # Test only
+	# pattern.pattern_id=randi_range(1,max_pattern)
 	add_child(pattern)
 	if Global.niveau > 1:
 		max_health = 10
