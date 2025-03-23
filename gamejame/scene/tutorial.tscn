@@ -102,7 +102,7 @@ offset_right = 602.0
 offset_bottom = 48.0
 theme_override_font_sizes/font_size = 32
 text = "Time stop power
-Pick it up then go hit the boss"
+Pick it up then go hit the bad guy"
 
 [node name="GoBackButton" parent="Panel" instance=ExtResource("6_whbp6")]
 layout_mode = 0
