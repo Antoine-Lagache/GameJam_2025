@@ -1,10 +1,28 @@
-[gd_scene load_steps=4 format=3 uid="uid://bxp0mugwbw7sc"]
+[gd_scene load_steps=8 format=3 uid="uid://xrnld6ll3m0h"]
 
 [ext_resource type="Script" uid="uid://dhthqbj36gf7m" path="res://script/start_menu.gd" id="1_e43t8"]
-[ext_resource type="PackedScene" uid="uid://ors7uvaq62k2" path="res://scene/start_menu_button.tscn" id="3_nld4k"]
+[ext_resource type="PackedScene" uid="uid://chiljqvrxnobv" path="res://scene/back_ground.tscn" id="2_nld4k"]
+[ext_resource type="Shader" uid="uid://1hcfyg37upp0" path="res://shader/noise.gdshader" id="3_ffvpn"]
+[ext_resource type="PackedScene" path="res://scene/start_menu_button.tscn" id="3_nld4k"]
 
-[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_i2t3q"]
-bg_color = Color(0.352, 0.36, 0.4, 1)
+[sub_resource type="FastNoiseLite" id="FastNoiseLite_luqaj"]
+frequency = 0.0037
+fractal_lacunarity = 1.765
+
+[sub_resource type="NoiseTexture2D" id="NoiseTexture2D_nld4k"]
+width = 1920
+height = 1080
+seamless = true
+noise = SubResource("FastNoiseLite_luqaj")
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_8jbf6"]
+resource_local_to_scene = true
+shader = ExtResource("3_ffvpn")
+shader_parameter/density = 1.0
+shader_parameter/fog_offset = Vector2(0, 0)
+shader_parameter/speed = 0.04
+shader_parameter/noise_texture = SubResource("NoiseTexture2D_nld4k")
+shader_parameter/color = Vector3(0.45, 0.55, 0.55)
 
 [node name="StartMenu" type="Control"]
 layout_mode = 3
@@ -15,11 +33,9 @@ grow_horizontal = 2
 grow_vertical = 2
 script = ExtResource("1_e43t8")
 
-[node name="Panel" type="Panel" parent="."]
-layout_mode = 0
-offset_right = 1920.0
-offset_bottom = 1080.0
-theme_override_styles/panel = SubResource("StyleBoxFlat_i2t3q")
+[node name="BackGround" parent="." instance=ExtResource("2_nld4k")]
+material = SubResource("ShaderMaterial_8jbf6")
+layout_mode = 1
 
 [node name="StartButton" parent="." instance=ExtResource("3_nld4k")]
 layout_mode = 0
