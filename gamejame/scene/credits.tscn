@@ -1,0 +1,117 @@
+[gd_scene load_steps=16 format=3 uid="uid://bko7x53gfnwdt"]
+
+[ext_resource type="Script" uid="uid://b0rtifvjc2b06" path="res://script/tutorial.gd" id="1_mjmje"]
+[ext_resource type="PackedScene" uid="uid://chiljqvrxnobv" path="res://scene/back_ground.tscn" id="2_xeho1"]
+[ext_resource type="Shader" uid="uid://1hcfyg37upp0" path="res://shader/noise.gdshader" id="3_nq74t"]
+[ext_resource type="Texture2D" uid="uid://2ammtl2i7lng" path="res://sprites/black_arrow.png" id="5_ykmia"]
+[ext_resource type="PackedScene" uid="uid://by160yhbb0qpo" path="res://scene/menu_button.tscn" id="8_ih6xd"]
+[ext_resource type="Texture2D" uid="uid://b38pcyp0ma024" path="res://sprites/white_arrow.png" id="9_f4p0c"]
+
+[sub_resource type="FastNoiseLite" id="FastNoiseLite_xftar"]
+frequency = 0.0037
+fractal_lacunarity = 1.765
+
+[sub_resource type="NoiseTexture2D" id="NoiseTexture2D_6iio1"]
+width = 1920
+height = 1080
+seamless = true
+noise = SubResource("FastNoiseLite_xftar")
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_l02f5"]
+resource_local_to_scene = true
+shader = ExtResource("3_nq74t")
+shader_parameter/density = 1.0
+shader_parameter/fog_offset = Vector2(0, 0)
+shader_parameter/speed = 0.04
+shader_parameter/noise_texture = SubResource("NoiseTexture2D_6iio1")
+shader_parameter/color = Vector3(0.45, 0.55, 0.55)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_whbp6"]
+bg_color = Color(0.352941, 0.360784, 0.4, 0)
+
+[sub_resource type="Theme" id="Theme_tphso"]
+default_font_size = 90
+
+[sub_resource type="Theme" id="Theme_tj3xu"]
+default_font_size = 40
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_tphso"]
+
+[sub_resource type="Theme" id="Theme_q68h7"]
+default_font_size = 40
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_mjmje"]
+
+[node name="Tutorial" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_mjmje")
+
+[node name="BackGround" parent="." instance=ExtResource("2_xeho1")]
+material = SubResource("ShaderMaterial_l02f5")
+layout_mode = 1
+
+[node name="Panel" type="Panel" parent="."]
+layout_mode = 0
+offset_right = 1920.0
+offset_bottom = 1080.0
+theme_override_styles/panel = SubResource("StyleBoxFlat_whbp6")
+
+[node name="Title" type="Label" parent="Panel"]
+layout_mode = 0
+offset_left = 813.0
+offset_top = 87.0
+offset_right = 1139.0
+offset_bottom = 232.0
+theme = SubResource("Theme_tphso")
+text = "Credits"
+
+[node name="GoBackButton" parent="Panel" instance=ExtResource("8_ih6xd")]
+layout_mode = 0
+texture_normal = ExtResource("5_ykmia")
+texture_hover = ExtResource("9_f4p0c")
+
+[node name="LabelGoBack" type="Label" parent="Panel/GoBackButton"]
+layout_mode = 0
+offset_left = 101.0
+offset_top = 26.0
+offset_right = 225.0
+offset_bottom = 87.0
+theme_override_font_sizes/font_size = 32
+text = "Go back"
+
+[node name="Developers" type="TextEdit" parent="."]
+layout_mode = 0
+offset_left = 188.0
+offset_top = 236.0
+offset_right = 738.0
+offset_bottom = 619.0
+theme = SubResource("Theme_tj3xu")
+theme_override_styles/normal = SubResource("StyleBoxEmpty_tphso")
+text = "Developers: 
+	GALDEANO Richard
+	LAGACHE Antoine
+	azzayu
+	anything is fine
+	"
+
+[node name="MusicAndSound" type="TextEdit" parent="."]
+layout_mode = 0
+offset_left = 922.0
+offset_top = 235.0
+offset_right = 1938.0
+offset_bottom = 613.0
+theme = SubResource("Theme_q68h7")
+theme_override_styles/normal = SubResource("StyleBoxEmpty_mjmje")
+text = "Music and sounds:
+	Background music : '8-Bit Music On' - moodmode
+	SFX : mixkit.co
+			 kenney.nl
+			 opengameart.org 
+			 (4 sci-fi menu sounds -Tim Mortimer)"
+
+[connection signal="pressed" from="Panel/GoBackButton" to="." method="_on_go_back_button_pressed"]
