@@ -10,6 +10,7 @@ var max_pattern = 16
 @onready var boss_hit_sound: AudioStreamPlayer2D = $BossHitSound
 var number_of_flash: int
 var hardcore = false # hell
+var max_health = 5
 
 func _ready():
 	add_to_group("mechant")
@@ -22,7 +23,7 @@ func _ready():
 	if hardcore:
 		pattern2.pattern_id=randi_range(1,max_pattern)
 		add_child(pattern2)
-	$CanvasLayer/Health_bar.max_health = 5
+	$CanvasLayer/Health_bar.max_health = max_health
 	$CanvasLayer/Health_bar.position = Vector2(screen.x - $CanvasLayer/Health_bar/red.size.x,0)
 	
 func _physics_process(_delta: float) -> void:
