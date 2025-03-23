@@ -58,9 +58,9 @@ func start_pattern(id:int) -> void:
 		18:
 			pattern_18()
 		19:
-			pass
+			pattern_19()
 		20:
-			pass
+			pattern_20()
 		999:
 			pattern_999()
 		_:
@@ -357,7 +357,7 @@ func pattern_17(): # rain
 				new_bullet.position = pos
 				new_bullet.direction = angle
 				add_child(new_bullet)
-		await get_tree().create_timer(0.05).timeout
+		await get_tree().create_timer(0.08).timeout
 		
 func pattern_18(): # reversed rain
 	await get_tree().create_timer(0.5).timeout # On evite le spawn kill au chgt de pattern
@@ -374,12 +374,46 @@ func pattern_18(): # reversed rain
 				new_bullet.position = pos
 				new_bullet.direction = angle
 				add_child(new_bullet)
-		await get_tree().create_timer(0.05).timeout
+		await get_tree().create_timer(0.08).timeout
 		
+func pattern_19(): # na na na nanaaaaaaaaaaaaaaaa
+	await get_tree().create_timer(0.5).timeout # On evite le spawn kill au chgt de pattern
+	var angle1 = randf_range(0, 2 * PI)
+	var angle2 = randf_range(0, 2 * PI)
+	while(pattern_id == 19):
+		if len(get_tree().get_nodes_in_group("bullet")) < bullet_limit and Global.time_speed:
+			var circle_size = 5
+			for i in range(circle_size):
+				var new_bullet:Node = bullet.instantiate()
+				new_bullet.speed = 400
+				new_bullet.color = Color("indigo")
+				new_bullet.direction = angle1 + i*2*PI/circle_size
+				add_child(new_bullet)
+			for i in range(circle_size):
+				var new_bullet:Node = bullet.instantiate()
+				new_bullet.speed = 200
+				new_bullet.color = Color("magenta")
+				new_bullet.direction = angle2 + i*2*PI/circle_size
+				add_child(new_bullet)
+			angle1 += 0.2
+			angle2 -= 0.2
+		await get_tree().create_timer(0.2).timeout # on veut faire un tour en une seconde
 		
-		
-		
-		
+func pattern_20(): # reversed rain
+	await get_tree().create_timer(0.5).timeout # On evite le spawn kill au chgt de pattern
+	mechant =  get_tree().get_nodes_in_group("mechant")[0]
+	player =  get_tree().get_nodes_in_group("player")[0]
+	while(pattern_id == 20):
+		if len(get_tree().get_nodes_in_group("bullet")) < bullet_limit and Global.time_speed:
+			var drop_size = 20
+			var angle = mechant.position.angle_to_point(player.position)
+			for i in range(drop_size):
+				var new_bullet:Node = bullet.instantiate()
+				new_bullet.speed = 100 + i*50
+				new_bullet.color = Color(((i*255.)/drop_size)/255.,0,0)
+				new_bullet.direction = angle
+				add_child(new_bullet)
+		await get_tree().create_timer(0.2).timeout
 		
 		
 		
