@@ -25,6 +25,7 @@ func _ready():
 		add_child(pattern2)
 	$CanvasLayer/Health_bar.max_health = max_health
 	$CanvasLayer/Health_bar.position = Vector2(screen.x - $CanvasLayer/Health_bar/red.size.x,0)
+	$CanvasLayer/Sprite2D.position = Vector2(screen.x - $CanvasLayer/Health_bar/red.size.x,18)
 	
 func _physics_process(_delta: float) -> void:
 	pass

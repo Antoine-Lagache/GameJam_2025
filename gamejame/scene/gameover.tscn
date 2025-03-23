@@ -1,6 +1,6 @@
 [gd_scene load_steps=11 format=3 uid="uid://bjxtn5eijqmly"]
 
-[ext_resource type="Script" uid="uid://c3tou42i0c6sx" path="res://script/gameover.gd" id="1_igyxd"]
+[ext_resource type="Script" path="res://script/gameover.gd" id="1_igyxd"]
 [ext_resource type="PackedScene" uid="uid://chiljqvrxnobv" path="res://scene/back_ground.tscn" id="2_0vake"]
 [ext_resource type="PackedScene" uid="uid://by160yhbb0qpo" path="res://scene/menu_button.tscn" id="2_73nri"]
 [ext_resource type="AudioStream" uid="uid://c4m47u8bkwhms" path="res://sounds/defeat.mp3" id="3_73nri"]

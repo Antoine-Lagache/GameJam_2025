@@ -36,6 +36,12 @@ autostart = true
 
 [node name="CanvasLayer" type="CanvasLayer" parent="."]
 
+[node name="Sprite2D" type="Sprite2D" parent="CanvasLayer"]
+z_index = 2
+position = Vector2(1414, 20)
+scale = Vector2(0.255, 0.255)
+texture = ExtResource("1_to7ja")
+
 [node name="Health_bar" parent="CanvasLayer" instance=ExtResource("3_ths1h")]
 position = Vector2(1420, 0)
 max_health = 5
