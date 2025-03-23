@@ -7,6 +7,8 @@ extends Node
 
 
 func _ready():
+	if (MenuMusic.playing):
+		MenuMusic.stop()
 	var bbeg:Node = mechant.instantiate()
 	var hero:Node = player.instantiate()
 	var temps:Node = time.instantiate()
