@@ -3,7 +3,7 @@
 [ext_resource type="Script" uid="uid://dhthqbj36gf7m" path="res://script/start_menu.gd" id="1_e43t8"]
 [ext_resource type="PackedScene" uid="uid://chiljqvrxnobv" path="res://scene/back_ground.tscn" id="2_nld4k"]
 [ext_resource type="Shader" uid="uid://1hcfyg37upp0" path="res://shader/noise.gdshader" id="3_ffvpn"]
-[ext_resource type="PackedScene" path="res://scene/start_menu_button.tscn" id="3_nld4k"]
+[ext_resource type="PackedScene" uid="uid://ors7uvaq62k2" path="res://scene/start_menu_button.tscn" id="3_nld4k"]
 
 [sub_resource type="FastNoiseLite" id="FastNoiseLite_luqaj"]
 frequency = 0.0037

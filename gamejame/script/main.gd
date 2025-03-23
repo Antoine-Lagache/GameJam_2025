@@ -5,8 +5,6 @@ extends Node
 @onready var time = load("res://scene/time.tscn")
 @onready var heal_blob = load("res://scene/heal_blob.tscn")
 
-var niveau = 1
-
 
 func _ready():
 	var bbeg:Node = mechant.instantiate()
@@ -14,10 +12,6 @@ func _ready():
 	var temps:Node = time.instantiate()
 	var heal_blob:Node = heal_blob.instantiate()
 	Global.time_speed = 1.
-	if niveau > 1:
-		bbeg.max_health = 10
-	if niveau > 2:
-		bbeg.hardcore = true
 	hero.mechant = bbeg
 	add_child(bbeg)
 	add_child(hero)

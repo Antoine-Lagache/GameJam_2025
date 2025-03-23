@@ -18,9 +18,9 @@ func distance(p1: Vector2, p2: Vector2):
 	return sqrt(difx * difx + dify * dify)
 
 func teleport():
-	var new_pos = Vector2(randf_range(10, screen.x), randf_range(10, screen.y))
+	var new_pos = Vector2(randf_range(50, screen.x-50), randf_range(50, screen.y-50))
 	while(distance(new_pos, Vector2(screen.x/2, screen.y/2)) < 40):
-		new_pos = Vector2(randf_range(10, screen.x), randf_range(10, screen.y))
+		new_pos = Vector2(randf_range(50, screen.x-50), randf_range(50, screen.y-50))
 	position = new_pos
 
 

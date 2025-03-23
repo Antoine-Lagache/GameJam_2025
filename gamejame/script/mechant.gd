@@ -20,10 +20,15 @@ func _ready():
 	# pattern.pattern_id=max_pattern # Test only
 	pattern.pattern_id=randi_range(1,max_pattern)
 	add_child(pattern)
+	if Global.niveau > 1:
+		max_health = 10
+	if Global.niveau > 2:
+		hardcore = true
 	if hardcore:
 		pattern2.pattern_id=randi_range(1,max_pattern)
 		add_child(pattern2)
 	$CanvasLayer/Health_bar.max_health = max_health
+	$CanvasLayer/Health_bar.health = max_health
 	$CanvasLayer/Health_bar.position = Vector2(screen.x - $CanvasLayer/Health_bar/red.size.x,0)
 	$CanvasLayer/Sprite2D.position = Vector2(screen.x - $CanvasLayer/Health_bar/red.size.x,18)
 	
