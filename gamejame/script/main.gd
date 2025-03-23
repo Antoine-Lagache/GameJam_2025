@@ -11,6 +11,7 @@ func _ready():
 	var hero:Node = player.instantiate()
 	var temps:Node = time.instantiate()
 	var heal_blob:Node = heal_blob.instantiate()
+	Global.time_speed = 1.
 	hero.mechant = bbeg
 	add_child(bbeg)
 	add_child(hero)

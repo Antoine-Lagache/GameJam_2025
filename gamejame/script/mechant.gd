@@ -14,7 +14,7 @@ func _ready():
 	var screen = DisplayServer.window_get_size()
 	position = Vector2(screen.x/2, screen.y/2)
 	print(position)
-	pattern.pattern_id=max_pattern
+	pattern.pattern_id=randi_range(1,max_pattern)
 	add_child(pattern)
 	$CanvasLayer/Health_bar.max_health = 5
 	$CanvasLayer/Health_bar.position = Vector2(screen.x - $CanvasLayer/Health_bar/red.size.x,0)
