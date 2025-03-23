@@ -1,4 +1,4 @@
-[gd_scene load_steps=12 format=3 uid="uid://d3ymo6oe3ebcn"]
+[gd_scene load_steps=12 format=3 uid="uid://bjxtn5eijqmly"]
 
 [ext_resource type="Script" uid="uid://c3tou42i0c6sx" path="res://script/gameover.gd" id="1_igyxd"]
 [ext_resource type="PackedScene" uid="uid://chiljqvrxnobv" path="res://scene/back_ground.tscn" id="2_0vake"]

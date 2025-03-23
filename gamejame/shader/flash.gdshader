@@ -5,7 +5,7 @@ uniform float flash_modifier: hint_range(0.0, 1.0) = 1;
 
 void fragment() {
 	vec4 color = texture(TEXTURE, UV);
-	color.rgb = mix(color.rgb, flash_color.rgb, flash_modifier);
+	color.rgb = mix(color.rgb, 1.-flash_color.rgb, flash_modifier);
 	COLOR = color;
 }
 

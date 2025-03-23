@@ -14,7 +14,7 @@ var direction: Vector2
 func loose_pv():
 	if i_frames <= 0:
 		hero_hit.play()
-		$Sprite2D.material.set_shader_parameter("flash_modifier", 0.7)
+		$Sprite2D.material.set_shader_parameter("flash_modifier", 0.4)
 		# $Flash_Timer.start()
 		flash_start()
 		$CanvasLayer/Health_bar.health += -1
@@ -34,7 +34,7 @@ func flash_start():
 	var number_of_flash = 3
 	for i in range(number_of_flash):
 		$Flash_Timer.start(0.08)
-		$Sprite2D.material.set_shader_parameter("flash_modifier", 0.6)
+		$Sprite2D.material.set_shader_parameter("flash_modifier", 0.4)
 		await $Flash_Timer.timeout
 		$Sprite2D.material.set_shader_parameter("flash_modifier", 0.0)
 		$Flash_Timer.start(0.12)
@@ -60,11 +60,17 @@ func _physics_process(_delta: float) -> void:
 	elif position.y > screen_size.y-size_player.y:
 		position.y = screen_size.y-size_player.y
 		velocity.y = -abs(-velocity.y)
-	
 	elif Input.is_key_pressed(KEY_SHIFT):
 		velocity = direction*SPEED/2
 	else:
 		velocity = direction*SPEED
+	
+	if direction.x <0:
+		$Sprite2D.flip_h  = false
+	else:
+		$Sprite2D.flip_h = true
+	
+	
 		
 	if i_frames > 0:
 		i_frames -= 1

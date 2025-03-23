@@ -6,27 +6,27 @@
 [ext_resource type="PackedScene" uid="uid://lmckkoynou7k" path="res://scene/health_bar.tscn" id="3_fvtld"]
 [ext_resource type="AudioStream" uid="uid://bdkgtfjulpvtn" path="res://sounds/hero_hit.mp3" id="4_ct4mp"]
 
-[sub_resource type="CircleShape2D" id="CircleShape2D_fvtld"]
-radius = 23.5053
-
-[sub_resource type="ShaderMaterial" id="ShaderMaterial_oh5ij"]
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_s4jxa"]
 resource_local_to_scene = true
 shader = ExtResource("2_s4jxa")
 shader_parameter/flash_color = Vector4(1, 1, 1, 1)
 shader_parameter/flash_modifier = 0.0
 
+[sub_resource type="CircleShape2D" id="CircleShape2D_fvtld"]
+radius = 23.5053
+
 [node name="Player" type="CharacterBody2D"]
 script = ExtResource("1_xo3ru")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+material = SubResource("ShaderMaterial_s4jxa")
+position = Vector2(5, 5)
+scale = Vector2(0.285, 0.285)
+texture = ExtResource("2_hjaqi")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 position = Vector2(-0.5, 0.5)
 shape = SubResource("CircleShape2D_fvtld")
-
-[node name="Sprite2D" type="Sprite2D" parent="."]
-material = SubResource("ShaderMaterial_oh5ij")
-position = Vector2(0.499992, 1.5)
-scale = Vector2(1.54, 1.54)
-texture = ExtResource("2_hjaqi")
 
 [node name="CanvasLayer" type="CanvasLayer" parent="."]
 
@@ -34,8 +34,8 @@ texture = ExtResource("2_hjaqi")
 
 [node name="Sprite2D" type="Sprite2D" parent="CanvasLayer"]
 z_index = 1
-position = Vector2(494, 18)
-scale = Vector2(0.815, 0.815)
+position = Vector2(499, 14)
+scale = Vector2(0.155, 0.155)
 texture = ExtResource("2_hjaqi")
 
 [node name="HeroHit" type="AudioStreamPlayer" parent="."]
