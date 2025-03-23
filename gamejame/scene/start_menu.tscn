@@ -1,9 +1,10 @@
-[gd_scene load_steps=8 format=3 uid="uid://xrnld6ll3m0h"]
+[gd_scene load_steps=9 format=3 uid="uid://xrnld6ll3m0h"]
 
 [ext_resource type="Script" uid="uid://dhthqbj36gf7m" path="res://script/start_menu.gd" id="1_e43t8"]
 [ext_resource type="PackedScene" uid="uid://chiljqvrxnobv" path="res://scene/back_ground.tscn" id="2_nld4k"]
 [ext_resource type="Shader" uid="uid://1hcfyg37upp0" path="res://shader/noise.gdshader" id="3_ffvpn"]
 [ext_resource type="PackedScene" uid="uid://ors7uvaq62k2" path="res://scene/start_menu_button.tscn" id="3_nld4k"]
+[ext_resource type="Texture2D" uid="uid://bvw1vdryj17sl" path="res://sprites/Storm.png" id="5_ffvpn"]
 
 [sub_resource type="FastNoiseLite" id="FastNoiseLite_luqaj"]
 frequency = 0.0037
@@ -39,10 +40,10 @@ layout_mode = 1
 
 [node name="StartButton" parent="." instance=ExtResource("3_nld4k")]
 layout_mode = 0
-offset_left = 510.0
-offset_top = 210.0
-offset_right = 610.0
-offset_bottom = 310.0
+offset_left = 710.0
+offset_top = 400.0
+offset_right = 810.0
+offset_bottom = 500.0
 
 [node name="StartGame" type="Label" parent="StartButton"]
 layout_mode = 0
@@ -56,10 +57,10 @@ horizontal_alignment = 1
 
 [node name="TutorialButton" parent="." instance=ExtResource("3_nld4k")]
 layout_mode = 0
-offset_left = 1220.0
-offset_top = 210.0
-offset_right = 1320.0
-offset_bottom = 310.0
+offset_left = 1210.0
+offset_top = 400.0
+offset_right = 1310.0
+offset_bottom = 500.0
 
 [node name="Tutorial" type="Label" parent="TutorialButton"]
 layout_mode = 0
@@ -71,10 +72,10 @@ text = "Tutorial"
 
 [node name="CreditsButton" parent="." instance=ExtResource("3_nld4k")]
 layout_mode = 0
-offset_left = 510.0
-offset_top = 600.0
-offset_right = 610.0
-offset_bottom = 700.0
+offset_left = 710.0
+offset_top = 700.0
+offset_right = 810.0
+offset_bottom = 800.0
 
 [node name="Credits" type="Label" parent="CreditsButton"]
 layout_mode = 0
@@ -86,10 +87,10 @@ text = "Credits"
 
 [node name="QuitButton" parent="." instance=ExtResource("3_nld4k")]
 layout_mode = 0
-offset_left = 1220.0
-offset_top = 600.0
-offset_right = 1320.0
-offset_bottom = 700.0
+offset_left = 1210.0
+offset_top = 700.0
+offset_right = 1310.0
+offset_bottom = 800.0
 
 [node name="Quit" type="Label" parent="QuitButton"]
 layout_mode = 0
@@ -98,6 +99,11 @@ offset_top = 38.0
 offset_right = 70.0
 offset_bottom = 61.0
 text = "Quit"
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+position = Vector2(978, 208)
+scale = Vector2(0.774902, 0.779114)
+texture = ExtResource("5_ffvpn")
 
 [connection signal="pressed" from="StartButton" to="." method="_on_start_button_pressed"]
 [connection signal="pressed" from="TutorialButton" to="." method="_on_tutorial_button_pressed"]
