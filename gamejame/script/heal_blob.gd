@@ -1,5 +1,7 @@
 extends Node2D
 
+@onready var heal_sound: AudioStreamPlayer2D = $HealSound
+
 var screen = DisplayServer.window_get_size()
 
 func _ready() -> void:
@@ -25,6 +27,8 @@ func teleport():
 func _on_area_2d_body_entered(body: Node2D) -> void:
 	if body.is_in_group("player"):
 		body.heal()
+		heal_sound.play()
+		
 	position = Vector2(-50, -50)
 		
 
