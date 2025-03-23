@@ -1,10 +1,11 @@
-[gd_scene load_steps=11 format=3 uid="uid://caxwgrcddc3y3"]
+[gd_scene load_steps=12 format=3 uid="uid://caxwgrcddc3y3"]
 
 [ext_resource type="Script" uid="uid://b3wt515ikx5de" path="res://script/victory.gd" id="1_8hrio"]
 [ext_resource type="PackedScene" uid="uid://chiljqvrxnobv" path="res://scene/back_ground.tscn" id="2_2g0ok"]
 [ext_resource type="Shader" uid="uid://1hcfyg37upp0" path="res://shader/noise.gdshader" id="3_7buwx"]
 [ext_resource type="AudioStream" uid="uid://bupo067nx6673" path="res://sounds/victory.mp3" id="3_qf7ln"]
 [ext_resource type="PackedScene" uid="uid://ors7uvaq62k2" path="res://scene/start_menu_button.tscn" id="4_2g0ok"]
+[ext_resource type="FontFile" uid="uid://cuw62dlxctfu4" path="res://Avigea.otf" id="4_7buwx"]
 
 [sub_resource type="FastNoiseLite" id="FastNoiseLite_dne65"]
 frequency = 0.0037
@@ -52,11 +53,13 @@ theme_override_styles/panel = SubResource("StyleBoxFlat_ihqoo")
 
 [node name="Title" type="Label" parent="Panel"]
 layout_mode = 0
-offset_left = 837.0
-offset_top = 200.0
-offset_right = 1167.0
-offset_bottom = 324.0
+offset_left = 748.0
+offset_top = 204.0
+offset_right = 1246.0
+offset_bottom = 343.0
 theme = SubResource("Theme_fa3o4")
+theme_override_fonts/font = ExtResource("4_7buwx")
+theme_override_font_sizes/font_size = 144
 text = "Victory!"
 
 [node name="MainMenuButton" parent="Panel" instance=ExtResource("4_2g0ok")]
