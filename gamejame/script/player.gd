@@ -21,6 +21,11 @@ func loose_pv():
 		if $CanvasLayer/Health_bar.health == 0:
 			get_tree().change_scene_to_file("res://scene/gameover.tscn")
 		i_frames = 30
+
+func heal():
+	if $CanvasLayer/Health_bar.health < $CanvasLayer/Health_bar.max_health:
+		$CanvasLayer/Health_bar.health += 1
+
 		
 func flash_start():
 	var number_of_flash = 3

@@ -7,7 +7,7 @@
 [ext_resource type="AudioStream" uid="uid://bdkgtfjulpvtn" path="res://sounds/hero_hit.mp3" id="4_ct4mp"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_fvtld"]
-radius = 38.0
+radius = 23.5053
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_oh5ij"]
 resource_local_to_scene = true
