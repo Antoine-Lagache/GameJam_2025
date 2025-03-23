@@ -24,6 +24,8 @@ func _ready():
 		max_health = 10
 	if Global.niveau > 2:
 		hardcore = true
+	if Global.niveau == -999:
+		max_pattern = 999
 	if hardcore:
 		pattern2.pattern_id=randi_range(1,max_pattern)
 		add_child(pattern2)
