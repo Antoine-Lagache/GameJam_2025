@@ -21,3 +21,9 @@ func _on_gameover_title_timer_timeout() -> void:
 		title.set("theme_override_colors/font_color", Color.WHITE)
 	else:
 		title.set("theme_override_colors/font_color", Color.RED)
+
+
+func _on_try_again_button_pressed() -> void:
+	Global.niveau = 1
+	get_tree().change_scene_to_file("res://scene/main.tscn")
+	

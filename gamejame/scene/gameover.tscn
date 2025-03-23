@@ -2,9 +2,9 @@
 
 [ext_resource type="Script" uid="uid://c3tou42i0c6sx" path="res://script/gameover.gd" id="1_igyxd"]
 [ext_resource type="PackedScene" uid="uid://chiljqvrxnobv" path="res://scene/back_ground.tscn" id="2_0vake"]
-[ext_resource type="PackedScene" uid="uid://by160yhbb0qpo" path="res://scene/menu_button.tscn" id="2_73nri"]
 [ext_resource type="AudioStream" uid="uid://c4m47u8bkwhms" path="res://sounds/defeat.mp3" id="3_73nri"]
 [ext_resource type="Shader" uid="uid://1hcfyg37upp0" path="res://shader/noise.gdshader" id="3_prwty"]
+[ext_resource type="PackedScene" uid="uid://ors7uvaq62k2" path="res://scene/start_menu_button.tscn" id="4_0vake"]
 
 [sub_resource type="FastNoiseLite" id="FastNoiseLite_88lim"]
 frequency = 0.0037
@@ -50,40 +50,6 @@ offset_right = 1920.0
 offset_bottom = 1080.0
 theme_override_styles/panel = SubResource("StyleBoxFlat_0yr2k")
 
-[node name="MainMenuButton" parent="Panel" instance=ExtResource("2_73nri")]
-layout_mode = 0
-offset_left = 510.0
-offset_top = 600.0
-offset_right = 610.0
-offset_bottom = 700.0
-scale = Vector2(2, 2)
-
-[node name="Label" type="Label" parent="Panel/MainMenuButton"]
-layout_mode = 0
-offset_left = 19.0
-offset_top = 25.0
-offset_right = 81.0
-offset_bottom = 75.0
-text = "Main
-Menu"
-horizontal_alignment = 1
-
-[node name="QuitButton" parent="Panel" instance=ExtResource("2_73nri")]
-layout_mode = 0
-offset_left = 1210.0
-offset_top = 600.0
-offset_right = 1310.0
-offset_bottom = 700.0
-scale = Vector2(2, 2)
-
-[node name="Label" type="Label" parent="Panel/QuitButton"]
-layout_mode = 0
-offset_left = 32.0
-offset_top = 38.0
-offset_right = 69.0
-offset_bottom = 61.0
-text = "Quit"
-
 [node name="Title" type="Label" parent="Panel"]
 layout_mode = 0
 offset_left = 685.0
@@ -93,6 +59,58 @@ offset_bottom = 324.0
 theme = SubResource("Theme_igyxd")
 text = "GAME OVER"
 
+[node name="MainMenuButton" parent="Panel" instance=ExtResource("4_0vake")]
+layout_mode = 0
+offset_left = 353.0
+offset_top = 555.0
+offset_right = 453.0
+offset_bottom = 655.0
+scale = Vector2(2, 2)
+
+[node name="MainMenuLabel" type="Label" parent="Panel/MainMenuButton"]
+layout_mode = 0
+offset_left = 19.5
+offset_top = 25.0
+offset_right = 81.5
+offset_bottom = 75.0
+text = "Main
+Menu"
+horizontal_alignment = 1
+
+[node name="QuitButton" parent="Panel" instance=ExtResource("4_0vake")]
+layout_mode = 0
+offset_left = 1357.0
+offset_top = 555.0
+offset_right = 1457.0
+offset_bottom = 655.0
+scale = Vector2(2, 2)
+
+[node name="QuitLabel" type="Label" parent="Panel/QuitButton"]
+layout_mode = 0
+offset_left = 33.0
+offset_top = 37.0
+offset_right = 70.0
+offset_bottom = 60.0
+text = "Quit"
+
+[node name="TryAgainButton" parent="Panel" instance=ExtResource("4_0vake")]
+layout_mode = 0
+offset_left = 856.0
+offset_top = 555.0
+offset_right = 956.0
+offset_bottom = 655.0
+scale = Vector2(2, 2)
+
+[node name="TryAgainLabel" type="Label" parent="Panel/TryAgainButton"]
+layout_mode = 0
+offset_left = 28.0
+offset_top = 23.5
+offset_right = 71.0
+offset_bottom = 72.5
+text = "Try
+again"
+horizontal_alignment = 1
+
 [node name="DefeatSound" type="AudioStreamPlayer2D" parent="."]
 stream = ExtResource("3_73nri")
 attenuation = 0.5
@@ -101,6 +119,5 @@ attenuation = 0.5
 wait_time = 0.5
 autostart = true
 
-[connection signal="pressed" from="Panel/MainMenuButton" to="." method="_on_main_menu_button_pressed"]
-[connection signal="pressed" from="Panel/QuitButton" to="." method="_on_quit_button_pressed"]
+[connection signal="pressed" from="Panel/TryAgainButton" to="." method="_on_try_again_button_pressed"]
 [connection signal="timeout" from="GameoverTitleTimer" to="." method="_on_gameover_title_timer_timeout"]
