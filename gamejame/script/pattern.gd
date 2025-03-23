@@ -52,7 +52,7 @@ func start_pattern(id:int) -> void:
 		15:
 			pattern_15()
 		16:
-			pass
+			pattern_16()
 		17:
 			pass
 		18:
@@ -323,6 +323,26 @@ func pattern_15(): # you're not safe from me
 				add_child(new_bullet)
 			angle += 0.1
 		await get_tree().create_timer(0.05).timeout
+		
+func pattern_16():
+	await get_tree().create_timer(0.5).timeout # On evite le spawn kill au chgt de pattern
+	player =  get_tree().get_nodes_in_group("player")[0]
+	mechant =  get_tree().get_nodes_in_group("mechant")[0]
+	while(pattern_id == 16):
+		if len(get_tree().get_nodes_in_group("bullet")) < bullet_limit and Global.time_speed:
+			var angle = mechant.position.angle_to_point(player.position)
+			var circle_size = 20
+			for i in range(circle_size):
+				var new_bullet:Node = bullet.instantiate()
+				new_bullet.speed = 600 - 50*(i%(circle_size/2))
+				new_bullet.color = Color("orange")
+				new_bullet.direction = angle + 0.1*(i-circle_size/4) + 0.1*circle_size/4 
+				if (i>=circle_size/2):
+					new_bullet.direction = angle - 0.1*(i-circle_size/4) + 0.1*circle_size/4
+				add_child(new_bullet)
+		await get_tree().create_timer(0.5).timeout
+		
+		
 		
 		
 		
