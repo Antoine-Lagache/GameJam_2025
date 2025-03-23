@@ -5,9 +5,11 @@ signal mechant_hit
 var pattern_path = load("res://scene/pattern.tscn")
 var bullet_limit:int = 100
 var pattern = pattern_path.instantiate()
+var pattern2 = pattern_path.instantiate()
 var max_pattern = 16
 @onready var boss_hit_sound: AudioStreamPlayer2D = $BossHitSound
 var number_of_flash: int
+var hardcore = false # hell
 
 func _ready():
 	add_to_group("mechant")
@@ -17,6 +19,9 @@ func _ready():
 	# pattern.pattern_id=max_pattern # Test only
 	pattern.pattern_id=randi_range(1,max_pattern)
 	add_child(pattern)
+	if hardcore:
+		pattern2.pattern_id=randi_range(1,max_pattern)
+		add_child(pattern2)
 	$CanvasLayer/Health_bar.max_health = 5
 	$CanvasLayer/Health_bar.position = Vector2(screen.x - $CanvasLayer/Health_bar/red.size.x,0)
 	
@@ -31,6 +36,11 @@ func _on_timer_timeout() -> void:
 	while new_pattern == pattern.pattern_id:
 		new_pattern = randi_range(1,max_pattern)
 	pattern.start_pattern(new_pattern)
+	if hardcore:
+		new_pattern = randi_range(1,max_pattern)
+		while new_pattern == pattern2.pattern_id or new_pattern == pattern.pattern_id:
+			new_pattern = randi_range(1,max_pattern)
+		pattern2.start_pattern(new_pattern)
 
 func _on_area_2d_body_entered(body: Node2D) -> void:
 	if body.is_in_group("player") and Global.time_speed:

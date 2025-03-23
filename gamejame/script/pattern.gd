@@ -1,7 +1,7 @@
 extends Node2D
 
 @onready var bullet = load("res://scene/bullet.tscn")
-var bullet_limit:int = 200
+var bullet_limit:int = 300
 var pattern_id:int = 1
 
 @onready var big_bullet = load("res://scene/big_bullet.tscn")
