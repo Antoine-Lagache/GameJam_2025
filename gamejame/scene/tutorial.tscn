@@ -54,20 +54,19 @@ theme_override_styles/panel = SubResource("StyleBoxFlat_whbp6")
 
 [node name="Player" type="Sprite2D" parent="Panel"]
 position = Vector2(330, 187)
-scale = Vector2(2, 2)
+scale = Vector2(0.69, 0.69)
 texture = ExtResource("1_won01")
 
 [node name="ArrowPlayer" type="Sprite2D" parent="Panel/Player"]
-position = Vector2(79, -2)
-scale = Vector2(0.5, 0.5)
+position = Vector2(233.333, 31.8841)
+scale = Vector2(1.41, 1.41)
 texture = ExtResource("2_mqdaa")
 
 [node name="LabelPlayer" type="Label" parent="Panel/Player"]
-offset_left = 113.5
-offset_top = -12.0
-offset_right = 275.5
-offset_bottom = 33.0
-scale = Vector2(0.5, 0.5)
+offset_left = 331.884
+offset_right = 493.884
+offset_bottom = 45.0
+scale = Vector2(1.41, 1.41)
 theme_override_font_sizes/font_size = 32
 text = "Hero (you)"
 
