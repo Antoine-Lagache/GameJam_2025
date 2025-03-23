@@ -1,10 +1,11 @@
-[gd_scene load_steps=11 format=3 uid="uid://bjxtn5eijqmly"]
+[gd_scene load_steps=12 format=3 uid="uid://bjxtn5eijqmly"]
 
 [ext_resource type="Script" uid="uid://c3tou42i0c6sx" path="res://script/gameover.gd" id="1_igyxd"]
 [ext_resource type="PackedScene" uid="uid://chiljqvrxnobv" path="res://scene/back_ground.tscn" id="2_0vake"]
 [ext_resource type="AudioStream" uid="uid://c4m47u8bkwhms" path="res://sounds/defeat.mp3" id="3_73nri"]
 [ext_resource type="Shader" uid="uid://1hcfyg37upp0" path="res://shader/noise.gdshader" id="3_prwty"]
 [ext_resource type="PackedScene" uid="uid://ors7uvaq62k2" path="res://scene/start_menu_button.tscn" id="4_0vake"]
+[ext_resource type="FontFile" uid="uid://cuw62dlxctfu4" path="res://Avigea.otf" id="4_prwty"]
 
 [sub_resource type="FastNoiseLite" id="FastNoiseLite_88lim"]
 frequency = 0.0037
@@ -52,11 +53,13 @@ theme_override_styles/panel = SubResource("StyleBoxFlat_0yr2k")
 
 [node name="Title" type="Label" parent="Panel"]
 layout_mode = 0
-offset_left = 685.0
-offset_top = 200.0
-offset_right = 1201.0
-offset_bottom = 324.0
+offset_left = 550.0
+offset_top = 166.0
+offset_right = 1358.0
+offset_bottom = 305.0
 theme = SubResource("Theme_igyxd")
+theme_override_fonts/font = ExtResource("4_prwty")
+theme_override_font_sizes/font_size = 144
 text = "GAME OVER"
 
 [node name="MainMenuButton" parent="Panel" instance=ExtResource("4_0vake")]
