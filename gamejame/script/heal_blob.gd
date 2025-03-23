@@ -10,15 +10,22 @@ func _ready() -> void:
 func _process(delta: float) -> void:
 	pass
 
+func distance(p1: Vector2, p2: Vector2):
+	var difx = p1.x - p2.x 
+	var dify = p1.y - p2.y 
+	return sqrt(difx * difx + dify * dify)
 
 func teleport():
-	position = Vector2(randf_range(10, screen.x), randf_range(10, screen.y))
+	var new_pos = Vector2(randf_range(10, screen.x), randf_range(10, screen.y))
+	while(distance(new_pos, Vector2(screen.x/2, screen.y/2)) < 40):
+		new_pos = Vector2(randf_range(10, screen.x), randf_range(10, screen.y))
+	position = new_pos
 
 
 func _on_area_2d_body_entered(body: Node2D) -> void:
 	if body.is_in_group("player"):
 		body.heal()
-	teleport()
+	position = Vector2(-50, -50)
 		
 
 

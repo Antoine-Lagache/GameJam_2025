@@ -15,4 +15,5 @@ func _ready():
 	add_child(bbeg)
 	add_child(hero)
 	add_child(temps)
+	add_child(heal_blob)
 	bbeg.connect("mechant_hit", Callable(temps, "on_mechant_hit"))
