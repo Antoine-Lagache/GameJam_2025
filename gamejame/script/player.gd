@@ -19,7 +19,10 @@ func loose_pv():
 		flash_start()
 		$CanvasLayer/Health_bar.health += -1
 		if $CanvasLayer/Health_bar.health == 0:
-			get_tree().change_scene_to_file("res://scene/gameover.tscn")
+			if Global.niveau != 3:
+				get_tree().change_scene_to_file("res://scene/gameover.tscn")
+			else:
+				get_tree().change_scene_to_file("res://scene/gameover_lvl3.tscn")
 		i_frames = 30
 
 func heal():
