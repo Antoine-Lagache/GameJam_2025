@@ -104,11 +104,12 @@ layout_mode = 0
 offset_left = 922.0
 offset_top = 235.0
 offset_right = 1938.0
-offset_bottom = 613.0
+offset_bottom = 673.0
 theme = SubResource("Theme_q68h7")
 theme_override_styles/normal = SubResource("StyleBoxEmpty_mjmje")
 text = "Music and sounds:
-	Background music : '8-Bit Music On' - moodmode
+	Game music : '8-Bit Music On' - moodmode
+	Menu music: '8-bit Arcade Mode' - moodmode
 	SFX : mixkit.co
 			 kenney.nl
 			 opengameart.org 
