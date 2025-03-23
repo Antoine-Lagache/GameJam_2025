@@ -25,4 +25,5 @@ func _on_credits_button_pressed() -> void:
 	
 func _input(ev):
 	if Input.is_key_pressed(KEY_T) && Input.is_key_pressed(KEY_O) && Input.is_key_pressed(KEY_U):
-		print("almost")
+		Global.niveau = -999
+		get_tree().change_scene_to_file("res://scene/main.tscn")
