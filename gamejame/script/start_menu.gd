@@ -2,6 +2,7 @@ extends Control
 
 
 func _on_start_button_pressed() -> void:
+	Global.niveau = 1
 	get_tree().change_scene_to_file("res://scene/main.tscn")  # Replace with function body.
 
 
