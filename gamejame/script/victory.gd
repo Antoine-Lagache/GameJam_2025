@@ -22,3 +22,8 @@ func _on_victory_title_timer_timeout() -> void:
 	else:
 		title.set("theme_override_colors/font_color", Color.BLUE)
 		
+
+
+func _on_next_level_button_pressed() -> void:
+	Global.niveau += 1
+	get_tree().change_scene_to_file("res://scene/main.tscn")
